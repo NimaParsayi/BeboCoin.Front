@@ -5,7 +5,7 @@ module.exports = defineConfig({
   devServer: {
     host: '127.0.0.1',
     port: 5050,
-    https: false,
+    https: true,
   },
   configureWebpack: {
     plugins: [
