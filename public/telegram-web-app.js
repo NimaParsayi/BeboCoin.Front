@@ -1692,6 +1692,7 @@
         document.addEventListener('click', linkHandler);
     }
 
+
     WebView.onEvent('theme_changed', onThemeChanged);
     WebView.onEvent('viewport_changed', onViewportChanged);
     WebView.onEvent('invoice_closed', onInvoiceClosed);
@@ -1704,5 +1705,7 @@
     WebView.onEvent('custom_method_invoked', onCustomMethodInvoked);
     WebView.postEvent('web_app_request_theme');
     WebView.postEvent('web_app_request_viewport');
+
+    WebView.postEvent('web_app_expand');
 
 })();
