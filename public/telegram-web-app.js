@@ -667,7 +667,7 @@
                 return;
             }
             curButtonState = btn_state;
-            WebView.postEvent('web_app_setup_back_button', false, btn_params);
+            WebView.postEvent('web_app_setup_back_button', true, btn_params);
         }
 
         function setParams(params) {
