@@ -316,9 +316,11 @@
         setThemeParams(theme_params);
     }
     if (initParams.tgWebAppVersion) {
+        console.log(initParams.tgWebAppVersion);
         webAppVersion = initParams.tgWebAppVersion;
     }
     if (initParams.tgWebAppPlatform) {
+        console.log(initParams.tgWebAppVersion);
         webAppPlatform = initParams.tgWebAppPlatform;
     }
 
@@ -1705,7 +1707,8 @@
     WebView.onEvent('custom_method_invoked', onCustomMethodInvoked);
     WebView.postEvent('web_app_request_theme');
     WebView.postEvent('web_app_request_viewport');
-
     WebView.postEvent('web_app_expand');
+
+    setHeaderColor('#ebdedc')
 
 })();
