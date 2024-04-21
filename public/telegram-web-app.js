@@ -430,7 +430,7 @@
     var viewportHeight = false, viewportStableHeight = false, isExpanded = true;
     function setViewportHeight(data) {
         if (typeof data !== 'undefined') {
-            isExpanded = !!data.is_expanded;
+            isExpanded = true//!!data.is_expanded;
             viewportHeight = data.height;
             if (data.is_state_stable) {
                 viewportStableHeight = data.height;
