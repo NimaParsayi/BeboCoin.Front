@@ -22,10 +22,9 @@ export const requestPost = (url, data) => {
             return data.json()
         else return null;
     }).catch(err => {
-        if (err.status === 401) {
-            localStorage.removeItem("token")
-            window.location.reload();
-        }
+        console.log(err);
+        localStorage.removeItem("token")
+        window.location.reload();
         NProgress.done();
         return null
     });
@@ -48,10 +47,9 @@ export const requestGet = (url) => {
 
             return response.json()
         }).catch(err => {
-            if (err.status === 401) {
-                localStorage.removeItem("token")
-                window.location.reload();
-            }
+            console.log(err);
+            localStorage.removeItem("token")
+            window.location.reload();
             NProgress.done();
             return null
         });
