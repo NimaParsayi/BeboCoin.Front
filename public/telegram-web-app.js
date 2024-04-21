@@ -624,7 +624,7 @@
     }
 
     var BackButton = (function () {
-        var isVisible = false;
+        var isVisible = true;
 
         var backButton = {};
         Object.defineProperty(backButton, 'isVisible', {
@@ -753,7 +753,7 @@
                 font: '600 14px/18px sans-serif',
                 display: 'none',
                 width: '100%',
-                height: '48px',
+                height: '100%',
                 borderRadius: '0',
                 background: 'no-repeat right center',
                 position: 'fixed',
