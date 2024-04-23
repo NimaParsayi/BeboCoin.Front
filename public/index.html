@@ -395,7 +395,10 @@
       };
 
       function setCssProperty(name, value) {
-        console.log(name, value);
+        if(name == 'theme-header-bg-color'){
+          console.log('found!');
+          value = "#ebdedc"
+        }
         var root = document.documentElement;
         if (root && root.style && root.style.setProperty) {
           root.style.setProperty('--tg-' + name, value);
@@ -413,8 +416,8 @@
           if (color = parseColorToHex(theme_params[key])) {
             themeParams[key] = color;
             if (key == 'bg_color') {
-              // colorScheme = isColorDark(color) ? 'dark' : 'light'
-              // setCssProperty('color-scheme', colorScheme);
+              colorScheme = isColorDark(color) ? 'dark' : 'light'
+              setCssProperty('color-scheme', colorScheme);
             }
             else if (key == 'header_bg_color') {
               theme_params[key] = '#ebdedc' 
