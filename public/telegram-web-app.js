@@ -1708,9 +1708,9 @@
     WebView.onEvent('write_access_requested', onWriteAccessRequested);
     WebView.onEvent('phone_requested', onPhoneRequested);
     WebView.onEvent('custom_method_invoked', onCustomMethodInvoked);
-    WebView.postEvent('web_app_request_theme');
+    //WebView.postEvent('web_app_request_theme');
     WebView.postEvent('web_app_request_viewport');
-    WebView.postEvent('web_app_expand');
-    setHeaderColor("#ebdedc");
+    WebView.postEvent('web_app_expand');S
+    WebView.postEvent('web_app_set_header_color', false, new { color: '#ebdedc' });
 
 })();
