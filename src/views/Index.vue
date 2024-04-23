@@ -148,7 +148,7 @@
                             </div>
                             <div class="col-4">
                                 <div class="product_card_image">
-                                    <img :src="item.skin.replace('~', domain)" alt="">
+                                    <img :src="domain + item.skin.replace('~', '')" alt="">
                                 </div>
                             </div>
                         </div>

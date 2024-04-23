@@ -36,7 +36,7 @@
                         @click="!checkSelectSkin(user.skin, '~/images/product/default.png') ? defaultSkin() : () => { }"
                         class="bg-card p-3 box-shadow rounded-1 flex-center">
                         <div class="product_skin_image flex-center rounded-1">
-                            <img :src="domain + '/images/product/default.png'" alt="">
+                            <img :src="domain + '/images/Product/default.png'" alt="">
                         </div>
                     </div>
                 </swiper-slide>
@@ -46,7 +46,7 @@
                         @click="!checkSelectSkin(user.skin, item.skin) ? setSkin(item.id) : () => { }"
                         class="bg-card p-3 box-shadow rounded-1 flex-center">
                         <div class="product_skin_image flex-center rounded-1">
-                            <img :src="item.skin.replace('~', domain)" alt="">
+                            <img :src="domain + item.skin.replace('~', '')" alt="">
                         </div>
                     </div>
                 </swiper-slide>
