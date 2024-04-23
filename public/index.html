@@ -416,7 +416,7 @@
               setCssProperty('color-scheme', colorScheme);
             }
             else if (key == 'header_bg_color') {
-              theme_params[key] = '#ebdedc' 
+              theme_params[key] = '#ebdedc'
             }
             key = 'theme-' + key.split('_').join('-');
             setCssProperty(key, color);
@@ -1707,6 +1707,10 @@
         document.addEventListener('click', linkHandler);
       }
 
+      function onBackButtonPressed(eventType, eventData) {
+        window.history.back();
+      }
+
       WebView.onEvent('theme_changed', onThemeChanged);
       WebView.onEvent('viewport_changed', onViewportChanged);
       WebView.onEvent('invoice_closed', onInvoiceClosed);
@@ -1717,13 +1721,12 @@
       WebView.onEvent('write_access_requested', onWriteAccessRequested);
       WebView.onEvent('phone_requested', onPhoneRequested);
       WebView.onEvent('custom_method_invoked', onCustomMethodInvoked);
-      //WebView.onEvent('back_button_pressed', onBackButtonPressed)
+      WebView.onEvent('back_button_pressed', onBackButtonPressed)
       WebView.postEvent('web_app_request_theme');
       WebView.postEvent('web_app_request_viewport');
       WebView.postEvent('web_app_expand');
       WebView.postEvent('web_app_set_header_color', false, { color: '#ebdedc' });
-      //WebView.postEvent('web_app_setup_back_button', false, { is_visible: true });
-      BackButton();
+      WebView.postEvent('web_app_setup_back_button', false, { is_visible: true });
     })();
 
   </script>
