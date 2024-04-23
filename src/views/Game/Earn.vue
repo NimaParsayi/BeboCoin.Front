@@ -7,7 +7,7 @@
             <div class="flex-center">
                 <img src="@/assets/images/icon/referral.png" width="70" alt="" />
                 <div class="d-flex flex-column ml-2">
-                    <span class="text-color fs-medium fw-bold">Invite Friends 💎 </span>
+                    <span class="text-color fs-medium fw-bold">Interaction! 💎 </span>
                     <span class="description-color fs-small fw-bold mt-1">Invite Friends and Get <b
                             class="theme-color">10%</b> bonus</span>
                 </div>

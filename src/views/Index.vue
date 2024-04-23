@@ -38,8 +38,8 @@
                 </div>
                 <div class="d-flex flex-column">
                     <span class="fs-medium fw-bold text-color">Start Mining</span>
-                    <span class="fs-small fw-bold description-color">Mining <b class="theme-color">Bebe</b> Coin With
-                        Click !</span>
+                    <span class="fs-small fw-bold description-color">Mining <b class="theme-color">Bebo</b> by
+                        tapping !</span>
                     <span v-if="user" class="fs-small mt-2 d-flex align-items-center fw-bold description-color">
                         <img class="mr-1" width="15px" src="@/assets/images/coin/gold.svg" alt="">
                         {{ formatNumber(user.balanceCoin) }}
