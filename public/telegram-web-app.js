@@ -531,7 +531,8 @@
         if (backgroundColor == 'secondary_bg_color') {
             return themeParams.secondary_bg_color;
         } else if (backgroundColor == 'bg_color') {
-            return themeParams.bg_color;
+            return '#ebdedc';
+            //return themeParams.bg_color;
         }
         return backgroundColor;
     }
