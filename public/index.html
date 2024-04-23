@@ -657,6 +657,7 @@
 
         function onBackButtonPressed() {
           receiveWebViewEvent('backButtonClicked');
+          window.history.back();
         }
 
         function buttonParams() {
@@ -1720,6 +1721,7 @@
       WebView.onEvent('write_access_requested', onWriteAccessRequested);
       WebView.onEvent('phone_requested', onPhoneRequested);
       WebView.onEvent('custom_method_invoked', onCustomMethodInvoked);
+      WebView.onEvent('back_button_pressed', onBackButtonPressed)
       WebView.postEvent('web_app_request_theme');
       WebView.postEvent('web_app_request_viewport');
       WebView.postEvent('web_app_expand');
