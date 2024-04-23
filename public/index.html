@@ -1711,6 +1711,7 @@
         window.history.back();
       }
 
+
       WebView.onEvent('theme_changed', onThemeChanged);
       WebView.onEvent('viewport_changed', onViewportChanged);
       WebView.onEvent('invoice_closed', onInvoiceClosed);
@@ -1726,7 +1727,6 @@
       WebView.postEvent('web_app_request_viewport');
       WebView.postEvent('web_app_expand');
       WebView.postEvent('web_app_set_header_color', false, { color: '#ebdedc' });
-      WebView.postEvent('web_app_setup_back_button', false, { is_visible: true });
     })();
 
   </script>

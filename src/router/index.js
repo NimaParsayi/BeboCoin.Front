@@ -113,7 +113,10 @@ router.beforeEach((to, from, next) => {
 
     if (to.meta.requiresAuth) {
         requestSignIn(sign, next);
-    } else next();
+    } else if(to.path !== '/'){
+        window.Telegram.WebView.postEvent('web_app_setup_back_button', false, { is_visible: true });
+    } 
+    else next();
 
 });
 router.afterEach(() => {
