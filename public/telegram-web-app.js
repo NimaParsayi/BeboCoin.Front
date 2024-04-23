@@ -1708,8 +1708,7 @@
     WebView.postEvent('web_app_request_theme');
     WebView.postEvent('web_app_request_viewport');
     WebView.postEvent('web_app_expand');
-
-    setHeaderColor('#ebdedc')
-    updateHeaderColor("#ebdedc")
+    WebView.postEvent('web_app_set_header_color', false, { color: '#ebdedc' });
+    WebView.postEvent('web_app_setup_back_button', false, { is_visible: true });
 
 })();
