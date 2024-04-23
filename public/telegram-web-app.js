@@ -402,6 +402,7 @@
         var color;
         console.log(theme_params);
         for (var key in theme_params) {
+            console.log(key);
             if (color = parseColorToHex(theme_params[key])) {
                 themeParams[key] = color;
                 if (key == 'bg_color') {
