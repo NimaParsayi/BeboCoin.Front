@@ -13,7 +13,7 @@
     <section class="website_information">
         <div class="box-shadow p-2 mt-2 bg-card rounded-1">
             <div class="d-flex align-items-center">
-                <img src="@/assets/images/icon/users.png" width="70" alt="">
+                <img src="@/assets/images/icon/players.png" width="70" alt="">
                 <div class="d-flex flex-column ml-2">
                     <span class="text-color fs-medium fw-bold">{{ formatNumber(totalUsers) }}</span>
                     <span class="description-color fs-small fw-bold mt-1">Total <b class="theme-color">Users</b></span>
@@ -31,7 +31,7 @@
         </div>
         <div class="box-shadow p-2 mt-2 bg-card rounded-1">
             <div class="d-flex align-items-center">
-                <img src="@/assets/images/icon/clock.png" width="70" alt="">
+                <img src="@/assets/images/icon/daily.png" width="70" alt="">
                 <div class="d-flex flex-column ml-2">
                     <span class="text-color fs-medium fw-bold">{{ formatNumber(dailyUsers) }}</span>
                     <span class="description-color fs-small fw-bold mt-1">Daily <b class="theme-color">Users</b></span>

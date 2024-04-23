@@ -5,7 +5,7 @@
       class="section_group box-shadow p-2 mt-2 bg-card rounded-2">
       <div class="flex-center h-full">
         <span class="text-color flex-center fs-medium fw-bold">
-          Json Squad
+          Join a Squad
           <ArrowRightShortIcon width="25" height="25" />
         </span>
       </div>
@@ -117,7 +117,7 @@
           </div>
           <div @click="$router.push('/game/frens')" class="footer_item flex-center flex-column">
             <div class="flex-center">
-              <img width="35px" src="@/assets/images/icon/frens.png" alt="" />
+              <img width="35px" src="@/assets/images/icon/frens.webp" alt="" />
             </div>
             <span class="flex-center text-color mt-1 fs-secondary-small fw-bold">Frens</span>
           </div>
