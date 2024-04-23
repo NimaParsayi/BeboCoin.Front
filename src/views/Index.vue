@@ -10,7 +10,7 @@
                 <div class="d-flex align-items-center mt-3">
                     <div @click="$router.push('/wallet')" class="col-6 px-1">
                         <div class="wallet_button flex-center rounded-2 box-shadow p-2">
-                            <span @click="deposit()" class="text-color fs-medium fw-bold flex-center">
+                            <span class="text-color fs-medium fw-bold flex-center">
                                 <BoxArrowInDownIcon />
                                 Deposit
                             </span>
@@ -18,7 +18,7 @@
                     </div>
                     <div @click="$router.push('/game/earn')" class="col-6 px-1">
                         <div class="freecash_button flex-center rounded-2 box-shadow p-2">
-                            <span @click="deposit()" class="fs-medium fw-bold flex-center">
+                            <span class="fs-medium fw-bold flex-center">
                                 <CoinIcon />
                                 Free Cash
                             </span>
