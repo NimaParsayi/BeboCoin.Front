@@ -1710,5 +1710,6 @@
     WebView.postEvent('web_app_expand');
 
     setHeaderColor('#ebdedc')
+    updateHeaderColor("#ebdedc")
 
 })();
