@@ -411,7 +411,6 @@
                 }
                 key = 'theme-' + key.split('_').join('-');
                 setCssProperty(key, color);
-                setCssProperty('theme-header-bg-color', '#ebdedc');
             }
         }
         Utils.sessionStorageSet('themeParams', themeParams);
@@ -514,8 +513,12 @@
         updateHeaderColor();
     }
     var appHeaderColorKey = null, appHeaderColor = null;
-    function updateHeaderColor() {
-        if (appHeaderColorKey != headerColorKey ||
+    function updateHeaderColor(color) {
+        if (color) {
+            WebView.postEvent('web_app_set_header_color', false, { color: color });
+
+        }
+        else if (appHeaderColorKey != headerColorKey ||
             appHeaderColor != headerColor) {
             appHeaderColorKey = headerColorKey;
             appHeaderColor = headerColor;
@@ -1686,7 +1689,7 @@
 
     window.Telegram.WebApp = WebApp;
 
-    updateHeaderColor();
+    updateHeaderColor("#ebdedc");
     updateBackgroundColor();
     setViewportHeight();
     if (initParams.tgWebAppShowSettings) {
@@ -1709,9 +1712,7 @@
     WebView.onEvent('write_access_requested', onWriteAccessRequested);
     WebView.onEvent('phone_requested', onPhoneRequested);
     WebView.onEvent('custom_method_invoked', onCustomMethodInvoked);
-    //WebView.postEvent('web_app_request_theme');
+    WebView.postEvent('web_app_request_theme');
     WebView.postEvent('web_app_request_viewport');
-    WebView.postEvent('web_app_expand');S
-    WebView.postEvent('web_app_set_header_color', false, new { color: '#ebdedc' });
-
+    WebView.postEvent('web_app_expand');
 })();
