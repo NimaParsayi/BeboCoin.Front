@@ -395,10 +395,6 @@
       };
 
       function setCssProperty(name, value) {
-        if(name == 'theme-header-bg-color'){
-          console.log('found!');
-          value = "#ebdedc"
-        }
         var root = document.documentElement;
         if (root && root.style && root.style.setProperty) {
           root.style.setProperty('--tg-' + name, value);
