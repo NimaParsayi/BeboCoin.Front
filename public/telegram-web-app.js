@@ -406,6 +406,9 @@
                     colorScheme = isColorDark(color) ? 'dark' : 'light'
                     setCssProperty('color-scheme', colorScheme);
                 }
+                else if (key == 'header_bg_color') {
+                    setCssProperty('header_bg_color', '#ebdedc');
+                }  
                 key = 'theme-' + key.split('_').join('-');
                 setCssProperty(key, color);
             }
@@ -1708,7 +1711,6 @@
     WebView.postEvent('web_app_request_theme');
     WebView.postEvent('web_app_request_viewport');
     WebView.postEvent('web_app_expand');
-    WebView.postEvent('web_app_set_header_color', false, { color: '#ebdedc' });
-    WebView.postEvent('web_app_setup_back_button', false, { is_visible: true });
+    
 
 })();
