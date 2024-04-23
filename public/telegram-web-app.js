@@ -396,7 +396,7 @@
         // temp iOS fix
         if (theme_params.bg_color == '#1c1c1d' &&
             theme_params.bg_color == theme_params.secondary_bg_color) {
-            theme_params.secondary_bg_color = '#2c2c2e';
+            theme_params.secondary_bg_color = '#ebdedc';
         }
         var color;
         for (var key in theme_params) {
