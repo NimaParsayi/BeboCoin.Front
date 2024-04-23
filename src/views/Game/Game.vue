@@ -91,7 +91,7 @@
       <div class="d-flex align-items-center justify-content-between">
         <div class="flex-center">
           <div class="available_coin_icon mr-2">
-            <img src="@/assets/images/icon/clock.webp" width="40px" alt="" />
+            <img src="@/assets/images/icon/clock.png" width="40px" alt="" />
           </div>
           <div class="d-flex flex-column">
             <span class="fs-large fw-secondary-bold text-color">{{
@@ -105,18 +105,19 @@
           <div @click="$router.push('/game/boost')" class="footer_item flex-center flex-column">
             <div class="flex-center">
               <img width="35px" src="@/assets/images/icon/boost.png" alt="" />
+              
             </div>
             <span class="flex-center text-color mt-1 fs-secondary-small fw-bold">Boost</span>
           </div>
           <div @click="$router.push('/game/earn')" class="footer_item flex-center flex-column">
             <div class="flex-center">
-              <img width="35px" src="@/assets/images/icon/earn.webp" alt="" />
+              <img width="35px" src="@/assets/images/icon/earn.png" alt="" />
             </div>
             <span class="flex-center text-color mt-1 fs-secondary-small fw-bold">Earn</span>
           </div>
           <div @click="$router.push('/game/frens')" class="footer_item flex-center flex-column">
             <div class="flex-center">
-              <img width="35px" src="@/assets/images/icon/frens.webp" alt="" />
+              <img width="35px" src="@/assets/images/icon/frens.png" alt="" />
             </div>
             <span class="flex-center text-color mt-1 fs-secondary-small fw-bold">Frens</span>
           </div>
