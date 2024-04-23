@@ -300,7 +300,7 @@ export default {
     },
     submitMining() {
       requestPost("/game/click", {
-        count: this.countClick,
+        count: this.countClick + this.botMining,
       }).then((json) => {
         if (!json) return;
 
