@@ -399,6 +399,7 @@
             theme_params.secondary_bg_color = '#ebdedc';
         }
         var color;
+        console.log(theme_params);
         for (var key in theme_params) {
             if (color = parseColorToHex(theme_params[key])) {
                 themeParams[key] = color;
@@ -406,11 +407,9 @@
                     colorScheme = isColorDark(color) ? 'dark' : 'light'
                     setCssProperty('color-scheme', colorScheme);
                 }
-                else if (key == 'header_bg_color') {
-                    setCssProperty('header_bg_color', '#ebdedc');
-                }  
                 key = 'theme-' + key.split('_').join('-');
                 setCssProperty(key, color);
+                setCssProperty('theme-header-bg-color', '#ebdedc');
             }
         }
         Utils.sessionStorageSet('themeParams', themeParams);
@@ -531,8 +530,7 @@
         if (backgroundColor == 'secondary_bg_color') {
             return themeParams.secondary_bg_color;
         } else if (backgroundColor == 'bg_color') {
-            return '#ebdedc';
-            //return themeParams.bg_color;
+            return themeParams.bg_color;
         }
         return backgroundColor;
     }
@@ -1712,6 +1710,6 @@
     WebView.postEvent('web_app_request_theme');
     WebView.postEvent('web_app_request_viewport');
     WebView.postEvent('web_app_expand');
-    
+    setHeaderColor("#ebdedc");
 
 })();
