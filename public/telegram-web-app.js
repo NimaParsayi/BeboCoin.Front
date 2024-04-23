@@ -514,6 +514,7 @@
     }
     var appHeaderColorKey = null, appHeaderColor = null;
     function updateHeaderColor(color) {
+        console.log(color);
         if (color) {
             WebView.postEvent('web_app_set_header_color', false, { color: color });
 

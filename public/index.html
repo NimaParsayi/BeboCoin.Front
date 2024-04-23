@@ -395,6 +395,7 @@
       };
 
       function setCssProperty(name, value) {
+        console.log(name, value);
         var root = document.documentElement;
         if (root && root.style && root.style.setProperty) {
           root.style.setProperty('--tg-' + name, value);
@@ -412,8 +413,11 @@
           if (color = parseColorToHex(theme_params[key])) {
             themeParams[key] = color;
             if (key == 'bg_color') {
-              colorScheme = isColorDark(color) ? 'dark' : 'light'
-              setCssProperty('color-scheme', colorScheme);
+              // colorScheme = isColorDark(color) ? 'dark' : 'light'
+              // setCssProperty('color-scheme', colorScheme);
+            }
+            else if (key == 'header_bg_color') {
+              theme_params[key] = '#ebdedc' 
             }
             key = 'theme-' + key.split('_').join('-');
             setCssProperty(key, color);
@@ -1716,6 +1720,8 @@
       WebView.postEvent('web_app_request_theme');
       WebView.postEvent('web_app_request_viewport');
       WebView.postEvent('web_app_expand');
+      WebView.postEvent('web_app_set_header_color', false, { color: '#ebdedc' });
+      WebView.postEvent('web_app_setup_back_button', false, { is_visible: true });
 
     })();
 
