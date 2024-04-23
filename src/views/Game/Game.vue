@@ -48,7 +48,7 @@
           <div class="flex-center">
             <div @click="$router.push('/game/state')" class="flex-center state_button mr-3 rounded-1 ">
               <BranchIcon />
-              <span class="fs-small fw-bold">State</span>
+              <span class="fs-small fw-bold">Stats</span>
               <BranchIcon class="reverce" />
             </div>
             <div @click="$router.push('/game/league')" class="flex-center">

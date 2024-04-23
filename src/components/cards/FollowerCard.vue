@@ -2,7 +2,7 @@
     <div class="w-full d-flex align-items-center justify-content-between mt-2">
         <div class="flex-center">
             <div class="user_card_image mr-2">
-                <img width="55px" height="55px" class="rounded-circle" src="@/assets/images/group/image.jpg" alt="">
+                <img width="55px" height="55px" class="rounded-circle" :src="require(`@/assets/images/avatars/${getRandomNumber()}.png`)" alt="">
             </div>
             <div class="d-flex flex-column">
                 <span class="text-color fs-medium fw-bold">{{ user.firstName }}</span>
@@ -44,6 +44,9 @@ export default {
         getLeague(index) {
             return getLeagueInfo(index);
         },
+        getRandomNumber(){
+            return Math.floor(Math.random() * (5 - 1) + 1);
+        }
     },
 }
 </script>

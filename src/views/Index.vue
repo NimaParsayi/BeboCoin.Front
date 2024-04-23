@@ -91,8 +91,8 @@
                                                     <div
                                                         class="d-flex align-items-center justify-content-between w-full">
                                                         <span class="text-color fs-secondary-small fw-bold">Multi
-                                                            Click</span>
-                                                        <span class="text-color fs-secondary-small fw-bold">{{
+                                                            Tap</span>
+                                                        <span class="text-color fs-secondary-small fw-bold">+ {{
         formatNumber(item.multipleClick) }}</span>
                                                     </div>
                                                     <div class="w-full bg-card rounded-2 mt-1 product_progress ">
@@ -108,9 +108,8 @@
                                                 <div class="flex-center flex-column w-full">
                                                     <div
                                                         class="d-flex align-items-center justify-content-between w-full">
-                                                        <span class="text-color fs-secondary-small fw-bold">Per
-                                                            Second</span>
-                                                        <span class="text-color fs-secondary-small fw-bold">{{
+                                                        <span class="text-color fs-secondary-small fw-bold">Recharging Speed</span>
+                                                        <span class="text-color fs-secondary-small fw-bold">+ {{
         formatNumber(item.miningPerTime) }}</span>
                                                     </div>
                                                     <div class="w-full bg-card rounded-2 mt-1 product_progress ">
@@ -128,9 +127,9 @@
                                                 <div class="flex-center flex-column w-full">
                                                     <div
                                                         class="d-flex align-items-center justify-content-between w-full">
-                                                        <span class="text-color fs-secondary-small fw-bold">Limit
-                                                            Mining</span>
-                                                        <span class="text-color fs-secondary-small fw-bold">{{
+                                                        <span class="text-color fs-secondary-small fw-bold">Energy
+                                                            Limit</span>
+                                                        <span class="text-color fs-secondary-small fw-bold">+ {{
         formatNumber(item.miningLimit) }}</span>
                                                     </div>
                                                     <div class="w-full bg-card rounded-2 mt-1 product_progress ">
