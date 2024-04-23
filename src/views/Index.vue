@@ -200,10 +200,10 @@ export default {
             return formatNumber(number);
         },
         deposit() {
-            requestPost("/wallet/deposit").then((json) => {
-                if (!json) return;
-                this.wallet = json.result;
-            });
+            // requestPost("/wallet/deposit").then((json) => {
+            //     if (!json) return;
+            //     this.wallet = json.result;
+            // });
         },
         buyProduct(product) {
             if (product.isBought) return;
