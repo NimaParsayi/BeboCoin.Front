@@ -308,6 +308,7 @@ export default {
         this.user = json.result;
 
         this.countClick = 0;
+        this.botMining = 0;
       });
     },
     addBalanceCoin(number) {
