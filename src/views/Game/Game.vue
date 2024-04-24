@@ -301,7 +301,7 @@ export default {
     },
     submitMining() {
       requestPost("/game/click", {
-        count: this.countClick + this.botMining,
+        count: this.countClick,
       }).then((json) => {
         if (!json) return;
 
@@ -309,7 +309,6 @@ export default {
         this.user = json.result;
 
         this.countClick = 0;
-        this.botMining = 0;
       });
     },
     addBalanceCoin(number) {
