@@ -1,7 +1,7 @@
 <template>
     <section v-if="challenge" class="section_complet_task py-4">
         <div class="flex-center flex-column">
-            <h1 class="fs-large fw-bold text-color">Complet Task</h1>
+            <h1 class="fs-large fw-bold text-color">Complete Task</h1>
             <div class="flex-center mt-1">
                 <span class="description-color fs-small fw-bold">{{ challenge.title }}</span>
             </div>
@@ -17,7 +17,7 @@
                             src="@/assets/images/icon/money.png" alt="" />
                         {{ formatNumber(challenge.bonus) }} <b class="theme-color ml-1"> Reward !</b>
                     </span>
-                    <span class="description-color fs-small fw-bold mt-1">Complet Task and Get Reward !</span>
+                    <span class="description-color fs-small fw-bold mt-1">Complete task and get Reward.</span>
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 <template>
   <div v-if="user" :style="isTurbo ? `background-image: url(${require('@/assets/images/coin/gold.svg')})` : ''"
-    :class="isTurbo ? 'background_turbo' : ''" class="h-screen d-flex flex-column py-3">
+    :class="isTurbo ? 'background_turbo' : ''" class="h-screen d-flex flex-column pt-1 pb-3">
     <section @click="$router.push('/group/squad')" v-if="user && !user.group"
       class="section_group box-shadow p-2 mt-2 bg-card rounded-2">
       <div class="flex-center h-full">

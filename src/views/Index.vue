@@ -53,7 +53,7 @@
         </div>
     </section>
     <section class="section_products py-3">
-        <h1 class="text-color fs-medium fw-bold mb-3">Boost by <b class="theme-color">buying</b> nft</h1>
+        <h1 class="text-color fs-medium fw-bold mb-3">Boost by <b class="theme-color">purchasing</b> NFT</h1>
         <swiper :slides-per-view="1" :space-between="10" :modules="modules"
             :autoplay="{ delay: 2500, disableOnInteraction: false, }">
             <swiper-slide v-for="(item, index) in products" class="product_card" :key="index">

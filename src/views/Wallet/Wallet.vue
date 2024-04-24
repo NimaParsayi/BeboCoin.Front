@@ -5,13 +5,13 @@
     </div>
     <div class="mt-3 bg-card box-shadow p-3 rounded-2">
       <div class="d-flex flex-column">
-        <span class="text-color fs-small fw-bold mb-3">Payment With Ton</span>
+        <span class="text-color fs-small fw-bold mb-3">Payment in $TON</span>
         <div
           @click="tonWalletConnect"
           class="wallet_button flex-center rounded-2 box-shadow p-2"
         >
           <span class="text-color fs-medium fw-bold flex-center">
-            Ton Wallet Connect
+            Connect Ton Wallet
           </span>
         </div>
       </div>
