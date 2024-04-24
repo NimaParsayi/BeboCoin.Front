@@ -1,5 +1,5 @@
 <template>
-  <div v-if="user" :style="isTurbo ? `background-image: url(${require('@/assets/images/coin/gold.svg')})` : ''"
+  <div v-if="user" :style="(isTurbo ? `background-image: url(${require('@/assets/images/coin/gold.svg')});` : ''); 'height: 100vh;'"
     :class="isTurbo ? 'background_turbo' : ''" class="h-screen d-flex flex-column pt-1 pb-3">
     <section @click="$router.push('/group/squad')" v-if="user && !user.group"
       class="section_group box-shadow p-2 mt-2 bg-card rounded-2">
@@ -400,8 +400,8 @@ export default {
 .section_click {
   width: 100%;
   height: 100%;
-  max-width: 350px;
-  max-height: 350px;
+  max-width: 300px;
+  max-height: 300px;
   transition: ease all 0.2s;
 }
 
