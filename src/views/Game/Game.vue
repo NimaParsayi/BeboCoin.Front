@@ -1,6 +1,6 @@
 <template>
-  <div v-if="user" :style="isTurbo ? `background-image: url(${require('@/assets/images/coin/gold.svg')});` : ''" style="height: 100vh"
-    :class="isTurbo ? 'background_turbo' : ''" class="h-screen d-flex flex-column pt-1 pb-3">
+  <div v-if="user" :style="isTurbo ? `background-image: url(${require('@/assets/images/coin/gold.svg')});` : ''"
+    style="height: 100vh" :class="isTurbo ? 'background_turbo' : ''" class="h-screen d-flex flex-column pt-1 pb-3">
     <section @click="$router.push('/group/squad')" v-if="user && !user.group"
       class="section_group box-shadow p-2 mt-2 bg-card rounded-2">
       <div class="flex-center h-full">
@@ -83,7 +83,7 @@
             </span>
 
             <span v-if="!turboIsActive() && timeoutTurbo" class="text-color fs-medium fw-bold ml-3">
-              {{ timeoutTurbo.hours }}:{{ timeoutTurbo.minutes }}:{{ timeoutTurbo.seconds }}
+              {{ getTurboTimeoutInString() }}
             </span>
           </div>
         </div>
@@ -105,7 +105,7 @@
           <div @click="$router.push('/game/boost')" class="footer_item flex-center flex-column">
             <div class="flex-center">
               <img width="35px" src="@/assets/images/icon/boost.png" alt="" />
-              
+
             </div>
             <span class="flex-center text-color mt-1 fs-secondary-small fw-bold">Boost</span>
           </div>
@@ -177,7 +177,7 @@ export default {
 
         this.mining += this.botMining;
 
-        window.Swal.fire(`You received ${this.botMining} coin from your automaton`, "", "info");
+        window.Swal.fire(`You received ${this.botMining} coin from your automation`, "", "info");
       });
 
     });
@@ -323,6 +323,15 @@ export default {
         this.scores.splice(index, 1);
       }
     },
+    formatNumberInString(number) {
+      if (number <= 9){
+        return "0" + number;
+      }
+      else return number;
+    },
+    getTurboTimeoutInString() {
+      return `${this.formatNumberInString(this.timeoutTurbo.hours)}:${this.formatNumberInString(this.timeoutTurbo.minutes)}:${this.formatNumberInString(this.timeoutTurbo.seconds)}`
+    }
   },
 };
 </script>
