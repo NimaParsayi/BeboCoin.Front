@@ -65,7 +65,7 @@
 
     <section class="section_game py-4">
       <div class="flex-center mx-auto section_click">
-        <img @click="setMarker" @touchstart="setMarker" :src="domain + user.skin.replace('~', '')" alt="" />
+        <img @touchstart="setMarker" :src="domain + user.skin.replace('~', '')" alt="" />
         <div v-for="(item, index) in scores" :key="index" :style="`top: ${item.y}; left:${item.x};`"
           class="scores_user">
           <span class="text-color fs-secondary-large fw-bold">{{ receiveScoreClick() }}</span>
