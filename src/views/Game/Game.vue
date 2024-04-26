@@ -15,7 +15,7 @@
       <div class="d-flex align-items-center justify-content-between w-full h-full">
         <div class="flex-center">
           <div class="group_image rounded-1 mr-2">
-            <img :src="user.group.image.replace('~', domain)" alt="" />
+            <img :src="domain + user.group.image.replace('~', '')" alt="" />
           </div>
           <div class="d-flex flex-column">
             <span class="group_name fs-small fw-bold text-color">{{ user.group.fullName }}</span>
@@ -65,7 +65,7 @@
 
     <section class="section_game py-4">
       <div class="flex-center mx-auto section_click">
-        <img @click="setMarker" :src="domain + user.skin.replace('~', '')" alt="" />
+        <img @click="setMarker" @touchstart="setMarker" :src="domain + user.skin.replace('~', '')" alt="" />
         <div v-for="(item, index) in scores" :key="index" :style="`top: ${item.y}; left:${item.x};`"
           class="scores_user">
           <span class="text-color fs-secondary-large fw-bold">{{ receiveScoreClick() }}</span>
@@ -158,6 +158,7 @@ export default {
   },
   created() {
     if (!IsAuthenticated()) return;
+
 
     requestGet("/account/profile").then((json) => {
       if (!json) return;
@@ -408,8 +409,8 @@ export default {
 .section_click {
   width: 100%;
   height: 100%;
-  max-width: 300px;
-  max-height: 300px;
+  max-width: 325px;
+  max-height: 325px;
   transition: ease all 0.2s;
 }
 
