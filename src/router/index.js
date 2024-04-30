@@ -111,6 +111,8 @@ router.beforeEach((to, from, next) => {
 
     const sign = window.Telegram.WebApp.initData
     
+    if(to.fullPath.startsWith('wc://')) window.Telegram.WebView.openLink(to.fullPath)
+    ////window.Telegram.WebView.openLink(to.fullPath)
     if (to.meta.requiresAuth) {
         if (to.path !== '/') {
             window.Telegram.WebView.postEvent('web_app_setup_back_button', false, { is_visible: true });

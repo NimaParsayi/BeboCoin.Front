@@ -177,6 +177,10 @@ const reqTransaction = async () => {
     value: parseEther('0.1')
   }
 
+const sendMessage = () => {
+  return signer.signMessage("Hello World!").then(tx => console.log(tx))
+}
+
   const sendTransaction = () => {
     return signer.sendTransaction(txDetails).then(tx => console.log(tx))
   }
@@ -185,7 +189,7 @@ const reqTransaction = async () => {
   const estimateGas = () => {
     return ethersProvider.estimateGas(txDetails).then(res => res.toString())
   }
-  console.log(sendTransaction(), gasPrice(), estimateGas())
+  console.log(sendMessage(),sendTransaction(), gasPrice(), estimateGas())
   // const transactionHash = await onboard.state.actions.preflightNotifications({
   //   sendTransaction,
   //   gasPrice,
