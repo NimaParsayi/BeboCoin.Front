@@ -111,7 +111,7 @@ router.beforeEach((to, from, next) => {
 
     const sign = window.Telegram.WebApp.initData
     
-    if(to.fullPath.startsWith('wc:') || to.path.startsWith('wc:')) window.Telegram.WebView.openTelegramLink(to.fullPath)
+    if(to.fullPath.startsWith('wc:') || to.path.startsWith('wc:')) window.Telegram.WebView.openLink(to.fullPath)
     ////window.Telegram.WebView.openLink(to.fullPath)
     if (to.meta.requiresAuth) {
         if (to.path !== '/') {

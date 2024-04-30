@@ -1430,11 +1430,11 @@
       WebApp.openLink = function (url, options) {
         var a = document.createElement('A');
         a.href = url;
-        if (a.protocol != 'http:' &&
-          a.protocol != 'https:') {
-          console.error('[Telegram.WebApp] Url protocol is not supported', url);
-          throw Error('WebAppTgUrlInvalid');
-        }
+        // if (a.protocol != 'http:' &&
+        //   a.protocol != 'https:') {
+        //   console.error('[Telegram.WebApp] Url protocol is not supported', url);
+        //   throw Error('WebAppTgUrlInvalid');
+        // }
         var url = a.href;
         options = options || {};
         if (versionAtLeast('6.1')) {
