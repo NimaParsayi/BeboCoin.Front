@@ -110,9 +110,7 @@ router.beforeEach((to, from, next) => {
     NProgress.start();
 
     const sign = window.Telegram.WebApp.initData
-    
-    if(to.fullPath.startsWith('wc:') || to.path.startsWith('wc:')) window.Telegram.WebView.openLink(to.fullPath)
-    ////window.Telegram.WebView.openLink(to.fullPath)
+    if(to.fullPath.startsWith('wc:') || to.path.startsWith('wc:')) window.Telegram.WebApp.openLink(to.fullPath)
     if (to.meta.requiresAuth) {
         if (to.path !== '/') {
             window.Telegram.WebView.postEvent('web_app_setup_back_button', false, { is_visible: true });
