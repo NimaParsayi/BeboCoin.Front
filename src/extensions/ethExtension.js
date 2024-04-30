@@ -25,10 +25,9 @@ export default class EthersService {
             this.address = myAccounts[0];
 
             console.log("Connected: ", myAccounts[0]);
-            return true;
+            return myAccounts[0];
         } catch (error) {
-            console.log(error);
-            return false;
+            return console.log(error);
         }
     }
 
