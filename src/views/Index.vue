@@ -8,7 +8,7 @@
                 </span>
                 <h1 class="text-color fs-large fw-bold mt-1">${{ formatNumber(wallet.balance) }}</h1>
                 <div class="d-flex align-items-center mt-3">
-                    <div @click="$router.push('/wallet')" class="col-6 px-1">
+                    <div @click="openDeposit" class="col-6 px-1">
                         <div class="wallet_button flex-center rounded-2 box-shadow p-2">
                             <span class="text-color fs-medium fw-bold flex-center">
                                 <BoxArrowInDownIcon />
@@ -197,6 +197,10 @@ export default {
     methods: {
         formatNumber(number) {
             return formatNumber(number);
+        },
+        openDeposit(){
+            window.Telegram.WebApp.openLink(window.location.href + 'wallet')
+            //$router.push('/wallet')
         },
         deposit() {
             // requestPost("/wallet/deposit").then((json) => {
