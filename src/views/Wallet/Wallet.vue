@@ -4,7 +4,7 @@
       <h1 class="fs-large fw-bold text-color">Deposit</h1>
     </div>
     <div class="mt-3 bg-card box-shadow p-3 rounded-2">
-      <div class="d-flex flex-column">
+      <div class="d-flex flex-column" @click="showTonConnect" id="tonConnect">
         <span class="text-color fs-small fw-bold mb-3">Payment in $TON</span>
         <div id="ton-connect" class="wallet_button flex-center rounded-2 box-shadow p-2">
           <span class="text-color fs-medium fw-bold flex-center">
@@ -72,6 +72,18 @@ import injectedModule from '@web3-onboard/injected-wallets'
 import { ethers } from 'ethers'
 import trustModule from '@web3-onboard/trust'
 import walletConnectModule from '@web3-onboard/walletconnect'
+import { TonConnectUI } from '@tonconnect/ui'  
+import { TON_CONNECT_MANIFEST_URL } from '@/constants/configuration';
+
+    const tonConnectUI = new TonConnectUI({
+        manifestUrl: TON_CONNECT_MANIFEST_URL,
+        //buttonRootId: 'ton-connect'
+    });
+const showTonConnect = async () => {
+  const { modal } = tonConnectUI;
+
+  await modal.open();
+}
 
 const amount = ref(0);
 const injected = injectedModule()
@@ -150,14 +162,6 @@ init({
 
 const { connectedWallet, connectWallet, disconnectWallet } = useOnboard()
 
-if (connectedWallet?.provider) {
-  const ethersProvider = new ethers.providers.Web3Provider(
-    connectedWallet.provider,
-    'any'
-  )
-  console.log(ethersProvider)
-}
-
 const changeWalletStatus = async () => {
   const { provider, label } = connectedWallet.value || {}
   if (provider && label) {
@@ -168,8 +172,8 @@ const changeWalletStatus = async () => {
 }
 
 const reqTransaction = async () => {
-  const { provider } = connectedWallet.value;
-  console.log(provider)
+  const { provider, label } = connectedWallet.value;
+  console.log(label)
   const ethersProvider = new ethers.providers.Web3Provider(provider, 'any')
   const signer = ethersProvider.getSigner()
   const txDetails = {
@@ -177,19 +181,19 @@ const reqTransaction = async () => {
     value: parseEther('0.1')
   }
 
-const sendMessage = () => {
-  return signer.signMessage("Hello World!").then(tx => console.log(tx))
-}
+  const sendMessage = () => {
+    return signer.signMessage("Hello World!").then(tx => console.log(tx))
+  }
 
   const sendTransaction = () => {
-    return signer.sendTransaction(txDetails).then(tx => console.log(tx))
+    //return signer.sendTransaction(txDetails).then(tx => console.log(tx))
   }
   const gasPrice = () => ethersProvider.getGasPrice().then(res => res.toString())
 
   const estimateGas = () => {
     return ethersProvider.estimateGas(txDetails).then(res => res.toString())
   }
-  console.log(sendMessage(),sendTransaction(), gasPrice(), estimateGas())
+  console.log(sendMessage(), sendTransaction(), gasPrice(), estimateGas())
   // const transactionHash = await onboard.state.actions.preflightNotifications({
   //   sendTransaction,
   //   gasPrice,
@@ -206,7 +210,7 @@ const sendMessage = () => {
 // // import { parseEther } from 'viem'
 // import { createWeb3Modal, defaultWagmiConfig } from "@web3modal/wagmi";
 // import { mainnet, opBNBTestnet, bscTestnet } from "viem/chains";
-// import TonConnectUI from '@tonconnect/ui'
+
 
 // const ethersService = new EthersService();
 
@@ -288,11 +292,9 @@ export default {
       return formatNumber(amount);
     },
   },
-
   components: {}
 };
 </script>
-
 
 <style>
 .v-btn-container {
