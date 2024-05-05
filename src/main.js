@@ -4,12 +4,14 @@ import router from './router'
 import 'swiper/css';
 import '../node_modules/nprogress/nprogress.css'
 import ToastPlugin from 'vue-toast-notification';
-import 'vue-toast-notification/dist/theme-bootstrap.css';
+import 'vue-toast-notification/dist/theme-sugar.css';
 import "vue-connect-wallet/dist/style.css";
 import VueConnectWallet from "vue-connect-wallet";
 
 createApp(App)
     .use(router)
-    .use(ToastPlugin)
+    .use(ToastPlugin, {
+        position: 'bottom'
+    })
     .use(VueConnectWallet)
     .mount('#app')

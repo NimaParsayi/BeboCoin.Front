@@ -4,11 +4,12 @@
       <h1 class="fs-large fw-bold text-color">Deposit</h1>
     </div>
     <div class="mt-3 bg-card box-shadow p-3 rounded-2">
-      <div class="d-flex flex-column" @click="showTonConnect" id="tonConnect">
+      <div class="d-flex flex-column" @click="toggleTonConnect" id="tonConnect">
         <span class="text-color fs-small fw-bold mb-3">Payment in $TON</span>
         <div id="ton-connect" class="wallet_button flex-center rounded-2 box-shadow p-2">
           <span class="text-color fs-medium fw-bold flex-center">
-            Connect Ton Wallet
+            <span v-if="isTonWalletConnected">Connected to {{ tonConnectUI.walletInfo.name }} as Ton Wallet</span>
+            <span v-else>Connect Ton Wallet</span>
           </span>
         </div>
       </div>
@@ -52,7 +53,7 @@
               <img width="35px" src="@/assets/images/icon/ethereum.png" alt="" />
             </div>
 
-            <div @click="reqTransaction" class="col-10 wallet_button flex-center rounded-2 box-shadow p-2">
+            <div @click="sendTonTransaction()" class="col-10 wallet_button flex-center rounded-2 box-shadow p-2">
               <span class="text-color fs-medium fw-bold flex-center"> Deposit </span>
             </div>
           </div>
@@ -64,6 +65,8 @@
 
 <script setup>
 import WalletIcon from "@/components/Icons/WalletIcon.vue";
+import { useToast } from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-sugar.css';
 import { formatNumber } from "@/extensions/numberExtension";
 import { ref } from "vue";
 import { parseEther } from 'viem'
@@ -72,20 +75,92 @@ import injectedModule from '@web3-onboard/injected-wallets'
 import { ethers } from 'ethers'
 import trustModule from '@web3-onboard/trust'
 import walletConnectModule from '@web3-onboard/walletconnect'
-import { TonConnectUI } from '@tonconnect/ui'  
+import { TonConnectUI } from '@tonconnect/ui'
 import { TON_CONNECT_MANIFEST_URL } from '@/constants/configuration';
+import { IsAuthenticated, requestGet, requestPost } from "@/stores/commonStore";
+import { toNano } from '@ton/ton'
 
-    const tonConnectUI = new TonConnectUI({
-        manifestUrl: TON_CONNECT_MANIFEST_URL,
-        //buttonRootId: 'ton-connect'
-    });
-const showTonConnect = async () => {
-  const { modal } = tonConnectUI;
-
-  await modal.open();
-}
 
 const amount = ref(0);
+let tonWallet = ref("");
+let isTonWalletConnected = ref(false);
+const $toast = useToast();
+
+const tonConnectUI = new TonConnectUI({ manifestUrl: TON_CONNECT_MANIFEST_URL });
+tonConnectUI.uiOptions = {
+  twaReturnUrl: 'https://t.me/BeboCoinBot'
+};
+
+const toggleTonConnect = async () => {
+  const { modal } = tonConnectUI;
+  if (!isTonWalletConnected.value) {
+    await modal.open();
+  } else {
+    tonConnectUI.disconnect();
+    isTonWalletConnected.value = false;
+    $toast.error("You're now disconnected from Ton Wallet");
+  }
+}
+
+tonConnectUI.onModalStateChange(state => {
+  const { walletInfo } = tonConnectUI;
+  if (state.closeReason === "wallet-selected") {
+    tonWallet.value = walletInfo.name;
+    isTonWalletConnected.value = true;
+    $toast.success("You are connected to " + tonWallet.value)
+  }
+});
+
+const sendTonTransaction = async () => {
+  if (!IsAuthenticated) return;
+
+
+  const tonWalletAddress = requestGet('/Transaction/GetTonWallet').then((json) => {
+    if (!json) return;
+    return json.result;
+  })
+
+  if (isTonWalletConnected.value) {
+    const transaction = {
+      validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
+      messages: [
+        {
+          address: tonWalletAddress,
+          amount: toNano(`${amount.value}`).toString(),
+          payload: btoa(`I want to send ${amount.value} $ton to Bebo Coin wallet.`)
+        },
+      ]
+    }
+
+    try {
+      console.log(tonConnectUI.wallet)
+      await tonConnectUI.sendTransaction(transaction).then(result => {
+        const apiResult = requestPost("/Transaction/Add", new {
+          sender: "0:0",
+          receiver: transaction.messages[0].address,
+          network: "Ton",
+          Connection: "TonWallet",
+          amount: transaction.messages[0].amount,
+          dollarAmount: 1
+        }).then((json) => {
+          if (!json) return;
+          return json.result;
+        })
+        console.log(apiResult);
+
+        // you can use signed boc to find the transaction 
+        //const someTxData = await myAppExplorerService.getTransaction(result.boc);
+        console.log('Transaction was sent successfully', result);
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  }
+  else {
+    await reqTransaction();
+  }
+}
+
 const injected = injectedModule()
 const infuraKey = '70bc963325bf41f084d97fe2dfd489e7'
 const rpcUrl = `https://mainnet.infura.io/v3/${infuraKey}`
@@ -212,75 +287,14 @@ const reqTransaction = async () => {
 // import { mainnet, opBNBTestnet, bscTestnet } from "viem/chains";
 
 
-// const ethersService = new EthersService();
+const isNumber = async (evt) => {
+  const keysAllowed = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."];
+  const keyPressed = evt.key;
+  if (!keysAllowed.includes(keyPressed)) {
+    evt.preventDefault();
+  }
+};
 
-// const address = ref("");
-// // const balance = ref(0.0);
-// const amount = ref(0);
-
-// const projectId = "4fd0154d93f56d70fe1bbe05f6174944";
-
-// const metadata = {
-//   name: "Bebo Coin",
-//   description: "Web3Modal",
-//   url: "https://bebocoin.site",
-//   icons: ["https://avatars.githubusercontent.com/u/37784886"],
-// };
-
-// const chains = [mainnet, opBNBTestnet, bscTestnet];
-// const config = defaultWagmiConfig({
-//   chains,
-//   projectId,
-//   metadata,
-// });
-
-// reconnect(config);
-// ethersService.connectWallet();
-
-// createWeb3Modal({
-//   wagmiConfig: config,
-//   projectId,
-//   enableAnalytics: true,
-//   enableOnramp: true,
-// });
-
-// const isNumber = async (evt) => {
-//   const keysAllowed = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."];
-//   const keyPressed = evt.key;
-//   if (!keysAllowed.includes(keyPressed)) {
-//     evt.preventDefault();
-//   }
-// };
-
-// const reqTransaction = async () => {
-
-//   await ethersService.connectWallet();
-//   if (ethersService.address) {
-//   console.log(ethersService.address);
-//     await ethersService.sendTransaction(
-//       ethersService.address,
-//       "0xfB9bA5393233Ae1023e7a559ff448AC5AF654236",
-//       amount.value.toString()
-//     );
-//   }
-
-//   // reconnect(config);
-//   // const account = getAccount();
-//   // console.log(account);
-//   // const { hash } = await sendTransaction({
-//   //   to: '0xfB9bA5393233Ae1023e7a559ff448AC5AF654236',
-//   //   value: parseEther('0.01'),
-//   // })
-//   // console.log(hash);
-//   // return true;
-// };
-
-// const tonConnectUI = new TonConnectUI({
-//     manifestUrl: 'https://127.0.0.1:5050/tonconnect-manifest.json',
-//     buttonRootId: 'ton-connect'
-// });
-// const currentState = tonConnectUI.singleWalletModalState;
-// console.log('Current modal state:', currentState);
 
 </script>
 

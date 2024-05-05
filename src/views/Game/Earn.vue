@@ -76,7 +76,7 @@ export default {
     },
     methods: {
         addfriend() {
-            window.Telegram.WebApp.openTelegramLink(BOT_LINK + '?start=invitefrends')
+            window.Telegram.WebApp.openTelegramLink("tg://msg_url?"+ BOT_LINK + '?start=invitefrends&text=test')
         }
     }
 };
