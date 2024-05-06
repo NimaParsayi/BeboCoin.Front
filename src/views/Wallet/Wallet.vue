@@ -45,12 +45,12 @@
         </span>
         <div class="d-flex align-items-center justify-content-between">
           <div class="col-6">
-            <input class="w-full text-color fs-large fw-bold mt-1" value="0" v-model.number="amount"
+            <input class="w-full text-color fs-large fw-bold mt-1" v-model.number="amount"
               @keypress="isNumber($event)" type="number" />
           </div>
           <div class="flex-center col-6">
             <div class="col-3 bg-card mr-1 flex-center rounded-2 box-shadow p-1">
-              <img width="35px" src="@/assets/images/icon/ethereum.png" alt="" />
+              <img width="35px" src="@/assets/images/icon/ton.png" alt="" />
             </div>
 
             <div @click="sendTonTransaction()" class="col-10 wallet_button flex-center rounded-2 box-shadow p-2">
