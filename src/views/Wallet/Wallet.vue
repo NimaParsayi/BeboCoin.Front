@@ -78,13 +78,24 @@ import walletConnectModule from '@web3-onboard/walletconnect'
 import { TonConnectUI } from '@tonconnect/ui'
 import { TON_CONNECT_MANIFEST_URL } from '@/constants/configuration';
 import { IsAuthenticated, requestGet, requestPost } from "@/stores/commonStore";
-import { toNano } from '@ton/ton'
+import { toNano, fromNano } from '@ton/ton'
 
 
-const amount = ref(0);
+let amount = ref(0);
+let balance = ref(0);
 let tonWallet = ref("");
 let isTonWalletConnected = ref(false);
 const $toast = useToast();
+
+const updateWallet = async () => {
+  await requestGet("/wallet/get").then((json) => {
+    if (!json) return;
+    balance.value = json.result.balance;
+    amount.value = 0;
+  });
+}
+
+updateWallet();
 
 const tonConnectUI = new TonConnectUI({ manifestUrl: TON_CONNECT_MANIFEST_URL });
 tonConnectUI.uiOptions = {
@@ -115,45 +126,46 @@ const sendTonTransaction = async () => {
   if (!IsAuthenticated) return;
 
 
-  const tonWalletAddress = requestGet('/Transaction/GetTonWallet').then((json) => {
+  const tonWalletAddress = await requestGet('/Transaction/GetTonWallet').then((json) => {
     if (!json) return;
     return json.result;
   })
 
   if (isTonWalletConnected.value) {
     const transaction = {
-      validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
+      validUntil: Math.floor(Date.now() / 1000) + 120, // 2 mins
       messages: [
         {
           address: tonWalletAddress,
-          amount: toNano(`${amount.value}`).toString(),
-          payload: btoa(`I want to send ${amount.value} $ton to Bebo Coin wallet.`)
+          amount: toNano(`${amount.value}`).toString()
         },
       ]
     }
 
     try {
-      console.log(tonConnectUI.wallet)
-      await tonConnectUI.sendTransaction(transaction).then(result => {
-        const apiResult = requestPost("/Transaction/Add", new {
-          sender: "0:0",
-          receiver: transaction.messages[0].address,
-          network: "Ton",
-          Connection: "TonWallet",
-          amount: transaction.messages[0].amount,
-          dollarAmount: 1
-        }).then((json) => {
-          if (!json) return;
-          return json.result;
-        })
-        console.log(apiResult);
+      tonConnectUI.sendTransaction(transaction).then(result => {
 
-        // you can use signed boc to find the transaction 
-        //const someTxData = await myAppExplorerService.getTransaction(result.boc);
-        console.log('Transaction was sent successfully', result);
+        const objects = {
+          network: "Ton",
+          Connection: 1,
+          amount: fromNano(transaction.messages[0].amount),
+          boc: result.boc
+        }
+        console.log(objects);
+
+        requestPost("/Transaction/Add", objects).then((json) => {
+          if (!json) return;
+          $toast.success("Transaction was successful.")
+          updateWallet();
+          return json.result;
+        }).catch(err => {
+          $toast.error("Transaction was failed or canceled.")
+          console.log(err);
+        })
       });
+
     } catch (e) {
-      console.error(e);
+      $toast.error("Transaction was failed or canceled.")
     }
   }
   else {
@@ -301,6 +313,11 @@ const isNumber = async (evt) => {
 <script>
 export default {
   name: "WalletView",
+  // data() {
+  //   return{
+  //     balance: 0
+  //   }
+  // },
   methods: {
     formatNumber(amount) {
       return formatNumber(amount);
