@@ -14,6 +14,8 @@
     "@tonconnect/ui": "^2.0.2",
     "@wagmi/connectors": "^4.1.25",
     "@wagmi/core": "^2.6.16",
+    "@walletconnect/client": "^1.8.0",
+    "@walletconnect/qrcode-modal": "^1.8.0",
     "@web3-onboard/coinbase": "^2.2.7",
     "@web3-onboard/core": "^2.21.6",
     "@web3-onboard/fortmatic": "^2.0.19",

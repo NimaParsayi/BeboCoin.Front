@@ -4,6 +4,7 @@ import Boost from '@/views/Game/Boost';
 import League from '@/views/Game/League';
 import Earn from '@/views/Game/Earn';
 import Wallet from '@/views/Wallet/Wallet';
+import WalletConnect from '@/views/Wallet/WalletConnect';
 import State from '@/views/Game/State';
 import Friend from '@/views/Game/Friend';
 import Group from '@/views/Group/Group';
@@ -98,6 +99,18 @@ const routes = [
             {
                 path: '',
                 component: Wallet
+            },
+        ]
+    },
+    {
+        path: '/walletconnect',
+        meta: {
+            requiresAuth: true
+        },
+        children: [
+            {
+                path: '',
+                component: WalletConnect
             },
         ]
     },
