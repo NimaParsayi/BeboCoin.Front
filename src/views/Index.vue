@@ -108,7 +108,8 @@
                                                 <div class="flex-center flex-column w-full">
                                                     <div
                                                         class="d-flex align-items-center justify-content-between w-full">
-                                                        <span class="text-color fs-secondary-small fw-bold">Recharging Speed</span>
+                                                        <span class="text-color fs-secondary-small fw-bold">Recharging
+                                                            Speed</span>
                                                         <span class="text-color fs-secondary-small fw-bold">+ {{
         formatNumber(item.miningPerTime) }}</span>
                                                     </div>
@@ -263,6 +264,12 @@ export default {
 <style>
 .wallet_button {
     background-color: hsl(var(--theme-color));
+    cursor: pointer;
+}
+
+.wallet_button[disabled] {
+    background-color: grey;
+    cursor: text;
 }
 
 .freecash_button {

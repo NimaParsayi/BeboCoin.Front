@@ -3,41 +3,32 @@
     <div class="flex-center flex-column">
       <h1 class="fs-large fw-bold text-color">Deposit</h1>
     </div>
-    <div class="mt-3 bg-card box-shadow p-3 rounded-2">
-      <div class="d-flex flex-column" @click="toggleTonConnect" id="tonConnect">
-        <span class="text-color fs-small fw-bold mb-3">Payment in $TON</span>
+    <div class="mt-4 bg-card box-shadow p-3 rounded-2">
+      <div class="d-flex flex-column">
+        <span class="description-color d-flex align-items-center fs-small fw-bold">
+          <WalletIcon width="16px" height="16px" />
+          Your Wallet Balance
+        </span>
+        <h1 class="text-color fs-large fw-bold mt-2">
+          ${{ balance ? formatNumber(balance) : 0 }}
+        </h1>
+      </div>
+      <div class="d-flex flex-column mt-2">
         <div id="ton-connect" class="wallet_button flex-center rounded-2 box-shadow p-2">
-          <span class="text-color fs-medium fw-bold flex-center">
+          <span class="text-color fs-medium fw-bold flex-center" @click="toggleTonConnect" >
             <span v-if="isTonWalletConnected">Connected to {{ tonConnectUI.walletInfo.name }} as Ton Wallet</span>
             <span v-else>Connect Ton Wallet</span>
           </span>
         </div>
       </div>
-    </div>
+      
     <div class="mt-4 bg-card box-shadow p-3 rounded-2">
       <div class="d-flex flex-column">
-        <span class="description-color d-flex align-items-center fs-small fw-bold">
-          <WalletIcon width="16px" height="16px" />
-          Connect Wallet Balance
-        </span>
-        <h1 class="text-color fs-large fw-bold mt-1">
-          ${{ balance ? formatNumber(balance) : 0 }}
-        </h1>
-        <div class="d-flex align-items-center mt-3">
-          <div class="col-6 px-1">
-            <button type="button" @click="changeWalletStatus"
-              :class="connectedWallet ? 'wallet_button' : 'btn btn-primary'">Connect to a Wallet</button>
-          </div>
-          <div v-if="address" class="col-6 px-1">
-            <div @click="switchAccount()" class="wallet_button flex-center rounded-2 box-shadow p-2">
-              <span class="text-color fs-medium fw-bold flex-center"> Change </span>
-            </div>
-          </div>
+        <span class="fw-bold">You don't want use $TON? </span> <span class="wallet_button flex-center rounded-2 box-shadow p-2 fw-bold mt-3">Use Connect Wallet</span>
         </div>
-
-      </div>
     </div>
-    <div class="mt-3 bg-card box-shadow p-3 rounded-2">
+    </div>
+    <div class="mt-3 bg-card box-shadow p-3 rounded-2" v-if="isTonWalletConnected">
       <div class="d-flex flex-column">
         <span class="description-color d-flex align-items-center fs-small fw-bold">
           <WalletIcon width="16px" height="16px" />
@@ -53,9 +44,9 @@
               <img width="35px" src="@/assets/images/icon/ton.png" alt="" />
             </div>
 
-            <div @click="sendTonTransaction()" class="col-10 wallet_button flex-center rounded-2 box-shadow p-2">
+            <button @click="sendTonTransaction()" class="col-10 wallet_button flex-center rounded-2 box-shadow p-2">
               <span class="text-color fs-medium fw-bold flex-center"> Deposit </span>
-            </div>
+            </button>
           </div>
         </div>
       </div>
@@ -247,16 +238,16 @@ init({
   }
 })
 
-const { connectedWallet, connectWallet, disconnectWallet } = useOnboard()
+const { connectedWallet } = useOnboard()
 
-const changeWalletStatus = async () => {
-  const { provider, label } = connectedWallet.value || {}
-  if (provider && label) {
-    disconnectWallet({ label })
-  } else {
-    connectWallet()
-  }
-}
+// const changeWalletStatus = async () => {
+//   const { provider, label } = connectedWallet.value || {}
+//   if (provider && label) {
+//     disconnectWallet({ label })
+//   } else {
+//     connectWallet()
+//   }
+// }
 
 const reqTransaction = async () => {
   const { provider, label } = connectedWallet.value;
@@ -336,6 +327,7 @@ export default {
   padding: var(--size-space-2) !important;
   width: 100% !important;
 }
+
 
 .luck {
   cursor: not-allowed;
