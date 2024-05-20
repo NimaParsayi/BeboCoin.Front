@@ -13,7 +13,9 @@
                     Deposit To Wallet
                 </span>
                 <div class="d-flex align-items-center justify-content-between">
-                    <button @click="sendReq()" class="wallet_button flex-center rounded-2 box-shadow p-2 text-color fs-medium fw-bold">Send Transaction</button>
+                    <button @click="sendReq()"
+                        class="wallet_button flex-center rounded-2 box-shadow p-2 text-color fs-medium fw-bold">Send
+                        Transaction</button>
                     <!-- <div class="col-6">
                         <input class="w-full text-color fs-large fw-bold mt-1" v-model.number="amount"
                             @keypress="isNumber($event)" type="number" />
@@ -36,8 +38,9 @@
 <script setup>
 import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi'
 import { parseEther } from 'viem'
-import { mainnet, bsc } from 'viem/chains'
+import { mainnet, bsc, bscTestnet } from 'viem/chains'
 import { reconnect, sendTransaction } from '@wagmi/core'
+import { IsAuthenticated, requestGet } from "@/stores/commonStore";
 //import { useWeb3Modal } from '@web3modal/wagmi/vue'
 
 const projectId = 'b14e381d22f2009c0e104ada02de5bbd'
@@ -49,7 +52,7 @@ const metadata = {
     icons: ['https://avatars.githubusercontent.com/u/37784886']
 }
 
-const chains = [mainnet, bsc]
+const chains = [mainnet, bsc, bscTestnet]
 const config = defaultWagmiConfig({
     chains,
     projectId,
@@ -67,7 +70,11 @@ createWeb3Modal({
 })
 
 const sendReq = async () => {
-
+    // await requestGet("/wallet/get").then((json) => {
+    //     if (!json) return;
+    //     console.log(json)
+    // });
+    // if (!IsAuthenticated) return;
     const result = await sendTransaction(config, {
         to: '0xd2135CfB216b74109775236E36d4b433F1DF507B',
         value: parseEther('0.01'),
