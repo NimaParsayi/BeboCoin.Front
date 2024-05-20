@@ -104,9 +104,9 @@ const routes = [
     },
     {
         path: '/walletconnect',
-        meta: {
-            requiresAuth: true
-        },
+        // meta: {
+        //     requiresAuth: true
+        // },
         children: [
             {
                 path: '',
