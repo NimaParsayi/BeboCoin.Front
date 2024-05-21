@@ -22,12 +22,12 @@
         </div>
       </div>
       
-    <div class="mt-4 bg-card box-shadow p-3 rounded-2">
+    <!-- <div class="mt-4 bg-card box-shadow p-3 rounded-2">
       <div class="d-flex flex-column">
         <span class="fw-bold">You don't want use $TON? </span> 
         <span class="wallet_button flex-center rounded-2 box-shadow p-2 fw-bold mt-3" @click="redirectToWalletConnect">Use Wallet Connect</span>
         </div>
-    </div>
+    </div> -->
     </div>
     <div class="mt-3 bg-card box-shadow p-3 rounded-2" v-if="isTonWalletConnected">
       <div class="d-flex flex-column">
@@ -156,10 +156,10 @@ const sendTonTransaction = async () => {
   }
 }
 
-const redirectToWalletConnect = () => {
-  //$router.push('/WalletConnect')
-  window.Telegram.WebApp.openLink("/WalletConnect")
-}
+// const redirectToWalletConnect = () => {
+//   //$router.push('/WalletConnect')
+//   window.Telegram.WebApp.openLink("/WalletConnect")
+// }
 
 const isNumber = async (evt) => {
   const keysAllowed = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."];

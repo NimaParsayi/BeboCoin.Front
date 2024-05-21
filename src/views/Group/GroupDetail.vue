@@ -53,7 +53,7 @@
 
                 </div>
                 <div class="w-full flex-center flex-column mt-3">
-                    <button class="box-shadow p-3 mt-2 rounded-1 bg-card w-full">
+                    <button class="box-shadow p-3 mt-2 rounded-1 bg-card w-full" @click="inviteFriend()">
                         <span class="fs-medium fw-bold text-color">Invite Frends 🎈</span>
                     </button>
                 </div>
@@ -79,7 +79,7 @@
 
 <script>
 import UserCard from '@/components/cards/UserCard.vue';
-import { BASE_URL } from '@/constants/configuration';
+import { BASE_URL, BOT_LINK } from '@/constants/configuration';
 import { getLeagueInfo } from '@/extensions/leagueExtension';
 import { formatNumber } from '@/extensions/numberExtension';
 import { IsAuthenticated, requestGet, requestPost } from '@/stores/commonStore';
@@ -155,6 +155,9 @@ export default {
                 window.Swal.fire("You Are Joined Squad", "", "success");
 
             });
+        },
+        inviteFriend(){
+            window.Telegram.WebApp.openTelegramLink(`tg://msg_url?url=${BOT_LINK}?start=ref_${this.user.chatId}&text=Build your team to increase your mining rate and earn 500 tickets for a new friend!`);
         }
     }
 };
