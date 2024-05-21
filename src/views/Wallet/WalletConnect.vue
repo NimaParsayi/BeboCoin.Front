@@ -40,7 +40,7 @@ import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi'
 import { parseEther } from 'viem'
 import { mainnet, bsc, bscTestnet } from 'viem/chains'
 import { reconnect, sendTransaction } from '@wagmi/core'
-import { IsAuthenticated, requestGet } from "@/stores/commonStore";
+///import { IsAuthenticated, requestGet } from "@/stores/commonStore";
 //import { useWeb3Modal } from '@web3modal/wagmi/vue'
 
 const projectId = 'b14e381d22f2009c0e104ada02de5bbd'
