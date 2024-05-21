@@ -53,8 +53,8 @@
 
                 </div>
                 <div class="w-full flex-center flex-column mt-3">
-                    <button class="box-shadow p-3 mt-2 rounded-1 bg-card w-full" @click="inviteFriend()">
-                        <span class="fs-medium fw-bold text-color">Invite Frends 🎈</span>
+                    <button class="box-shadow p-3 mt-2 rounded-1 bg-card w-full">
+                        <span class="fs-medium fw-bold text-color" @click="inviteFriend()">Invite Frends 🎈</span>
                     </button>
                 </div>
 
