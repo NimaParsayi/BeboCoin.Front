@@ -157,7 +157,7 @@ export default {
             });
         },
         inviteFriend(){
-            window.Telegram.WebApp.openTelegramLink(`tg://msg_url?url=${BOT_LINK}?start=ref_${this.user.chatId}&text=Build your team to increase your mining rate and earn 500 tickets for a new friend!`);
+            window.Telegram.WebApp.openTelegramLink(`tg://msg_url?url=${BOT_LINK.replace("https://", null)}?start=ref_${this.user.chatId}&text=Build your team to increase your mining rate and earn 500 tickets for a new friend!`);
         }
     }
 };
