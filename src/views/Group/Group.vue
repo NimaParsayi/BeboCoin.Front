@@ -64,6 +64,7 @@ export default {
             return getLeagueInfo(index);
         }, createSquad() {
             window.Telegram.WebApp.openTelegramLink(BOT_LINK + '?start=joinsquad')
+            window.Telegram.WebApp.close()
         }
     },
     created() {
