@@ -4,8 +4,8 @@
         <div class="flex-center">
             <img src="@/assets/images/icon/squad.png" width="70" alt="" />
             <div class="d-flex flex-column ml-2">
-                <span class="text-color fs-medium fw-bold">State Bebe Coin </span>
-                <span class="description-color fs-small fw-bold mt-1">Show Description about BebeCoin</span>
+                <span class="text-color fs-medium fw-bold">Bebo Coin Stats</span>
+                <span class="description-color fs-small fw-bold mt-1">Check total stats for bebo</span>
             </div>
         </div>
     </div>
@@ -16,7 +16,7 @@
                 <div class="flex-center flex-column">
                     <img class="image_league mt-4" width="160px" src="@/assets/images/rank/bronze-large.png" alt="">
                     <h1 class="fs-large fw-bold text-color mt-4">Bronze League</h1>
-                    <span class="fs-medium fw-bold description-color mt-2">from <b class="theme-color">0</b> bebe
+                    <span class="fs-medium fw-bold description-color mt-2">from <b class="theme-color">0</b> bebo
                         Coin</span>
                 </div>
             </swiper-slide>
@@ -25,7 +25,7 @@
                 <div class="flex-center flex-column">
                     <img class="image_league mt-4" width="160px" src="@/assets/images/rank/silver-large.png" alt="">
                     <h1 class="fs-large fw-bold text-color mt-4">Silver League</h1>
-                    <span class="fs-medium fw-bold description-color mt-2">from <b class="theme-color">50,000</b> bebe
+                    <span class="fs-medium fw-bold description-color mt-2">from <b class="theme-color">50,000</b> Bebo
                         Coin</span>
                 </div>
             </swiper-slide>
@@ -34,7 +34,7 @@
                 <div class="flex-center flex-column">
                     <img class="image_league mt-4" width="160px" src="@/assets/images/rank/gold-large.png" alt="">
                     <h1 class="fs-large fw-bold text-color mt-4">Gold League</h1>
-                    <span class="fs-medium fw-bold description-color mt-2">from <b class="theme-color">500,000</b> bebe
+                    <span class="fs-medium fw-bold description-color mt-2">from <b class="theme-color">500,000</b> Bebo
                         Coin</span>
                 </div>
             </swiper-slide>
@@ -44,7 +44,7 @@
                     <img class="image_league mt-4" width="160px" src="@/assets/images/rank/platinum-large.png" alt="">
                     <h1 class="fs-large fw-bold text-color mt-4">Platinum League</h1>
                     <span class="fs-medium fw-bold description-color mt-2">from <b class="theme-color">1,000,000</b>
-                        bebe
+                        Bebo
                         Coin</span>
                 </div>
             </swiper-slide>
@@ -54,7 +54,7 @@
                     <img class="image_league mt-4" width="160px" src="@/assets/images/rank/diamond-large.png" alt="">
                     <h1 class="fs-large fw-bold text-color mt-4">Diamond League</h1>
                     <span class="fs-medium fw-bold description-color mt-2">from <b class="theme-color">10,000,000</b>
-                        bebe
+                        Bebo
                         Coin</span>
                 </div>
             </swiper-slide>
