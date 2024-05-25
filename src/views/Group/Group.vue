@@ -25,7 +25,7 @@
                         class="w-full d-flex rounded-1 p-2 align-items-center justify-content-between mt-2 bg-card box-shadow">
                         <div class="flex-center">
                             <img class="rounded-circle" width="65px" height="65px"
-                                :src="item.image.replace('~', domain)" alt="">
+                                :src="domain + item.image.replace('~', '')" alt="">
                             <div class="d-flex flex-column ml-2">
                                 <span class="text-color fs-medium fw-bold">{{ item.fullName }}</span>
                                 <span class="d-flex mt-1 align-items-center description-color fs-small fw-bold">

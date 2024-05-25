@@ -4,7 +4,7 @@
             <div class="d-flex align-items-center justify-content-between">
                 <div class="flex-center">
                     <div class="group_detail_image flex-center">
-                        <img width="65px" height="65px" class="rounded-circle" :src="group.image.replace('~', domain)"
+                        <img width="65px" height="65px" class="rounded-circle" :src="domain + group.image.replace('~', '')"
                             alt="">
                     </div>
                     <div class="d-flex flex-column ml-2">
