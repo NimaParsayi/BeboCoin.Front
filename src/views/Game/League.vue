@@ -102,7 +102,7 @@
                 <div v-for="(item, index) in users" :key="index" @click="$router.push('/group/detail/' + item.id)"
                     class="w-full d-flex rounded-1 p-2 align-items-center justify-content-between mt-2 bg-card box-shadow">
                     <div class="flex-center">
-                        <img class="rounded-circle" width="65px" height="65px" :src="item.image.replace('~', domain)"
+                        <img class="rounded-circle" width="65px" height="65px" :src="domain + item.image.replace('~', '')"
                             alt="">
                         <div class="d-flex flex-column ml-2">
                             <span class="text-color fs-medium fw-bold">{{ item.fullName }}</span>
