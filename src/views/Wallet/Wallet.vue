@@ -49,7 +49,7 @@
               <span class="text-color fs-medium fw-bold flex-center"> Deposit </span>
             </button>
           </div>
-          <span>Price: ${{ dollarAmount }}</span>
+          <p>Price: ${{ dollarAmount }}</p>
         </div>
       </div>
     </div>
@@ -183,7 +183,7 @@ const isNumber = async (evt) => {
     evt.preventDefault();
   }
 
-  requestGet(`/GetCryptpPriceInDollar/ton/${amount.value}`).then(response => {
+  requestGet(`/GetCryptoPriceInDollar/ton/${amount.value}`).then(response => {
     dollarAmount.value = response;
   });
 };
