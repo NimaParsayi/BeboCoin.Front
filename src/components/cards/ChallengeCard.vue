@@ -49,8 +49,8 @@ export default {
             return formatNumber(number)
         },
         openChallengeDetail(){
-            if (!challenge.isCompleted) {
-                this.$router.push('/challenge/' + challenge.id);
+            if (!this.challenge.isCompleted) {
+                this.$router.push('/challenge/' + this.challenge.id);
             }
         }
     }
