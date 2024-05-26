@@ -129,8 +129,9 @@ router.beforeEach((to, from, next) => {
         } else {
             window.Telegram.WebView.postEvent('web_app_setup_back_button', false, { is_visible: false });
         }
-        
+
         window.Telegram.WebView.onEvent('back_button_pressed', () => {
+            console.log("Clicked !");
             router.back();
         })
 
