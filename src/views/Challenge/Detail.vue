@@ -94,7 +94,7 @@ export default {
             }
             if (!this.tasksCompleted()) return;
 
-            requestPost("/challenge/completChallenge?id=" + this.challenge.id, {}).then((json) => {
+            requestPost("/challenge/completeChallenge?id=" + this.challenge.id, {}).then((json) => {
                 if (!json) return;
                 this.isCompleted = true;
                 window.Swal.fire("Task Completed Successfully", "", "success");
