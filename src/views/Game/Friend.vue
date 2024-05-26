@@ -73,6 +73,7 @@ export default {
         },
         addfriend() {
             window.Telegram.WebApp.openTelegramLink(BOT_LINK + '?start=invitefrends')
+            window.Telegram.WebApp.close()
         }
     }
 
