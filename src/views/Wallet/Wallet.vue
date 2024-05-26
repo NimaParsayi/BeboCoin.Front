@@ -15,14 +15,14 @@
       </div>
       <div class="d-flex flex-column mt-2">
         <div id="ton-connect" class="wallet_button flex-center rounded-2 box-shadow p-2">
-          <span class="text-color fs-medium fw-bold flex-center" @click="toggleTonConnect" >
+          <span class="text-color fs-medium fw-bold flex-center" @click="toggleTonConnect">
             <span v-if="isTonWalletConnected">Connected to {{ tonConnectUI.walletInfo.name }} as Ton Wallet</span>
             <span v-else>Connect Ton Wallet</span>
           </span>
         </div>
       </div>
-      
-    <!-- <div class="mt-4 bg-card box-shadow p-3 rounded-2">
+
+      <!-- <div class="mt-4 bg-card box-shadow p-3 rounded-2">
       <div class="d-flex flex-column">
         <span class="fw-bold">You don't want use $TON? </span> 
         <span class="wallet_button flex-center rounded-2 box-shadow p-2 fw-bold mt-3" @click="redirectToWalletConnect">Use Wallet Connect</span>
@@ -37,8 +37,8 @@
         </span>
         <div class="d-flex align-items-center justify-content-between">
           <div class="col-6">
-            <input class="w-full text-color fs-large fw-bold mt-1" v-model.number="amount"
-              @keypress="isNumber($event)" type="number" />
+            <input class="w-full text-color fs-large fw-bold mt-1" v-model.number="amount" @keypress="isNumber($event)"
+              type="number" />
           </div>
           <div class="flex-center col-6">
             <div class="col-3 bg-card mr-1 flex-center rounded-2 box-shadow p-1">
@@ -49,6 +49,7 @@
               <span class="text-color fs-medium fw-bold flex-center"> Deposit </span>
             </button>
           </div>
+          <span>Price: ${{ dollarAmount }}</span>
         </div>
       </div>
     </div>
@@ -68,6 +69,7 @@ import { toNano, fromNano } from '@ton/ton'
 
 
 let amount = ref(0);
+let dollarAmount = ref(0.0);
 let balance = ref(0);
 let tonWallet = ref("");
 let isTonWalletConnected = ref(false);
@@ -99,17 +101,17 @@ const toggleTonConnect = async () => {
   }
 }
 tonConnectUI.connectionRestored.then(restored => {
-    if (restored) {
-        console.log(
-            'Connection restored. Wallet:',
-            JSON.stringify({
-                ...tonConnectUI.wallet,
-                ...tonConnectUI.walletInfo
-            })
-        );
-    } else {
-        console.log('Connection was not restored.');
-    }
+  if (restored) {
+    console.log(
+      'Connection restored. Wallet:',
+      JSON.stringify({
+        ...tonConnectUI.wallet,
+        ...tonConnectUI.walletInfo
+      })
+    );
+  } else {
+    console.log('Connection was not restored.');
+  }
 });
 
 tonConnectUI.onModalStateChange(state => {
@@ -180,6 +182,10 @@ const isNumber = async (evt) => {
   if (!keysAllowed.includes(keyPressed)) {
     evt.preventDefault();
   }
+
+  requestGet(`/GetCryptpPriceInDollar/ton/${amount.value}`).then(response => {
+    dollarAmount.value = response;
+  });
 };
 
 

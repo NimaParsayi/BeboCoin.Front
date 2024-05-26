@@ -8,7 +8,7 @@
                 </span>
                 <h1 class="text-color fs-large fw-bold mt-1">${{ formatNumber(wallet.balance) }}</h1>
                 <div class="d-flex align-items-center mt-3">
-                    <div @click="$router.push({ path: '/wallet' }).then(() => { this.$router.go(0) })"
+                    <div @click="$router.push({ path: '/wallet' })"
                         class="col-6 px-1">
                         <div class="wallet_button flex-center rounded-2 box-shadow p-2">
                             <span class="text-color fs-medium fw-bold flex-center">
