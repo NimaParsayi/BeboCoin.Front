@@ -37,7 +37,7 @@
         </span>
         <div class="d-flex align-items-center justify-content-between">
           <div class="col-6">
-            <input class="w-full text-color fs-large fw-bold mt-1" v-model.number="amount" @keypress="isNumber($event)"
+            <input class="w-full text-color fs-large fw-bold mt-1" v-model.number="amount" @keypress="isNumber($event)" @change="updateDollarPrice()"
               type="number" />
           </div>
           <div class="flex-center col-6">
@@ -49,7 +49,9 @@
               <span class="text-color fs-medium fw-bold flex-center"> Deposit </span>
             </button>
           </div>
-          <p>Price: ${{ dollarAmount }}</p>
+          <div class="flex-center col-6">
+            <p>Price: ${{ dollarAmount }}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -182,11 +184,13 @@ const isNumber = async (evt) => {
   if (!keysAllowed.includes(keyPressed)) {
     evt.preventDefault();
   }
+};
 
-  requestGet(`/Transaction/GetCryptoPriceInDollar/ton/${amount.value}`).then(response => {
+const updateDollarPrice = async () => {
+  await requestGet(`/Transaction/GetCryptoPriceInDollar/ton/${amount.value}`).then(response => {
     dollarAmount.value = response;
   });
-};
+}
 
 
 </script>
