@@ -157,7 +157,7 @@ export default {
             });
         },
         inviteFriend(){
-            window.Telegram.WebApp.openTelegramLink(`https://t.me/share/url?url=${BOT_LINK}?start=ref_${this.user.chatId}&text=Let's print BeboCoin together 😋`);
+            window.Telegram.WebApp.openTelegramLink(`https://t.me/share/url?url=${BOT_LINK}?start=ref_${this.user.chatId}&text=Let's mint BeboCoin together 😋`);
         }
     }
 };
