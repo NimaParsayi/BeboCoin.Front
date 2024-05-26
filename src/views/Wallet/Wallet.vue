@@ -183,7 +183,7 @@ const isNumber = async (evt) => {
     evt.preventDefault();
   }
 
-  requestGet(`/GetCryptoPriceInDollar/ton/${amount.value}`).then(response => {
+  requestGet(`/Transaction/GetCryptoPriceInDollar/ton/${amount.value}`).then(response => {
     dollarAmount.value = response;
   });
 };
