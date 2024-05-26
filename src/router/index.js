@@ -118,18 +118,23 @@ const routes = [
 
 const router = createRouter({ history: createWebHistory(), routes })
 
+function onBackButtonPressed() {
+    router.go(-1)
+}
+
 
 router.beforeEach((to, from, next) => {
     NProgress.start();
-    
+
     const sign = window.Telegram.WebApp.initData
-    
+
     if (to.meta.requiresAuth) {
         if (to.path !== '/') {
             window.Telegram.WebView.postEvent('web_app_setup_back_button', false, { is_visible: true });
         } else {
             window.Telegram.WebView.postEvent('web_app_setup_back_button', false, { is_visible: false });
         }
+        window.Telegram.WebView.onEvent('back_button_pressed', onBackButtonPressed)
         requestSignIn(sign, next);
     }
     else next();
