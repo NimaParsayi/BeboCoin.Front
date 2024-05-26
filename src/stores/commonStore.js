@@ -62,11 +62,16 @@ export const getToken = () => {
     }
     return "";
 }
-export const requestSignIn = (sign) => {
-    requestPost("/account/SignIn", { webAppData: sign }).then(data => {
-        if (!data) return;
-        localStorage.setItem("token", JSON.stringify(data.result))
-    }).catch(err => console.log(err));
+export const requestSignIn = (sign, next) => {
+    const submittedSign = localStorage.getItem("webAppData");
+    if (submittedSign === null || submittedSign !== sign) {
+        requestPost("/account/SignIn", { webAppData: sign }).then(data => {
+            if (!data) return;
+            localStorage.setItem("webAppData", sign)
+            localStorage.setItem("token", JSON.stringify(data.result))
+        }).catch(err => console.log(err));
+    }
+    next();
 }
 
 export const IsAuthenticated = () => {

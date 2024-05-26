@@ -132,7 +132,7 @@ router.beforeEach((to, from, next) => {
         window.Telegram.WebView.onEvent('back_button_pressed', () => {
             router.go(-1);
         })
-        requestSignIn(sign);
+        requestSignIn(sign, next);
     }
     else next();
 
