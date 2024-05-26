@@ -1,5 +1,5 @@
 <template>
-    <div @click="!challenge.isCompleted ? $router.push('/challenge/' + challenge.id) : () => { }"
+    <div @click="openChallengeDetail()"
         class="d-flex align-items-center justify-content-between py-1 w-full">
         <div class="flex-center">
             <div :class="challenge.isCompleted ? 'completed' : ''"
@@ -47,6 +47,11 @@ export default {
     },methods:{
         formatNumber(number){
             return formatNumber(number)
+        },
+        openChallengeDetail(){
+            if (!challenge.isCompleted) {
+                this.$router.push('/challenge/' + challenge.id);
+            }
         }
     }
 }
