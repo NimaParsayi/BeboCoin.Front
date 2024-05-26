@@ -37,7 +37,7 @@
         </span>
         <div class="d-flex align-items-center justify-content-between">
           <div class="col-6">
-            <input class="w-full text-color fs-large fw-bold mt-1" v-model.number="amount" @keypress="isNumber($event)" @change="updateDollarPrice()"
+            <input class="w-full text-color fs-large fw-bold mt-1" v-model.number="amount" @keypress="isNumber($event)" @keydown="updateDollarPrice()"
               type="number" />
           </div>
           <div class="flex-center col-6">
@@ -49,10 +49,10 @@
               <span class="text-color fs-medium fw-bold flex-center"> Deposit </span>
             </button>
           </div>
-          <div class="flex-center col-6">
+        </div>
+          <div class="d-flex">
             <p>Price: ${{ dollarAmount }}</p>
           </div>
-        </div>
       </div>
     </div>
   </section>
