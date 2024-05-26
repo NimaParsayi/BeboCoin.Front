@@ -8,7 +8,7 @@
         </div>
         <div class="d-flex align-items-center justify-content-between bg-card p-3 my-4 box-shadow rounded-1">
             <div class="flex-center">
-                <img class="rounded-1" :src="challenge.image.replace('~', domain)" width="70" alt="">
+                <img class="rounded-1" :src="domain + challenge.image.replace('~', '')" width="70" alt="">
                 <div class="d-flex flex-column ml-2">
                     <span class="text-color d-flex align-items-center fs-medium fw-bold">
                         <img v-if="challenge.challengeBonus == 0" class="mr-1" width="18px"

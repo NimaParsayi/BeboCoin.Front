@@ -4,7 +4,7 @@
         <div class="flex-center">
             <div :class="challenge.isCompleted ? 'completed' : ''"
                 class="card_image flex-center p-2 box-shadow bg-card mr-2 rounded-2">
-                <img class="rounded-1" :src="challenge.image.replace('~', domain)" alt="">
+                <img class="rounded-1" :src="domain + challenge.image.replace('~', '')" alt="">
             </div>
             <div class="d-flex flex-column" :class="challenge.isCompleted ? 'completed' : ''">
                 <span class="text-color fs-small fw-bold">{{ challenge.title }}</span>
