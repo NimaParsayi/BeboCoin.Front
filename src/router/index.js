@@ -119,9 +119,8 @@ const routes = [
 const router = createRouter({ history: createWebHistory(), routes })
 
 function onBackButtonPressed() {
-    router.go(-1)
+    router.back();
 }
-
 
 router.beforeEach((to, from, next) => {
     NProgress.start();
