@@ -62,14 +62,10 @@ export const getToken = () => {
     }
     return "";
 }
-export const requestSignIn = (sign, next) => {
-    if (IsAuthenticated())
-        next();
-    else requestPost("/account/SignIn", { webAppData: sign }).then(data => {
+export const requestSignIn = (sign) => {
+    requestPost("/account/SignIn", { webAppData: sign }).then(data => {
         if (!data) return;
         localStorage.setItem("token", JSON.stringify(data.result))
-        next()
-
     }).catch(err => console.log(err));
 }
 
