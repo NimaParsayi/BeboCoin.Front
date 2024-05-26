@@ -98,6 +98,19 @@ const toggleTonConnect = async () => {
     $toast.error("You're now disconnected from Ton Wallet");
   }
 }
+tonConnectUI.connectionRestored.then(restored => {
+    if (restored) {
+        console.log(
+            'Connection restored. Wallet:',
+            JSON.stringify({
+                ...tonConnectUI.wallet,
+                ...tonConnectUI.walletInfo
+            })
+        );
+    } else {
+        console.log('Connection was not restored.');
+    }
+});
 
 tonConnectUI.onModalStateChange(state => {
   const { walletInfo } = tonConnectUI;
