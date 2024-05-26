@@ -38,7 +38,7 @@ export default {
         completeTask() {
             if (this.data.isCompleted) return;
 
-            requestPost("/challenge/completeTask", {id: this.task.id}).then((json) => {
+            requestPost("/challenge/completeTask", {"id": this.data.id}).then((json) => {
                 if (!json) return;
 
                 if (json.result.isCompleted) {
