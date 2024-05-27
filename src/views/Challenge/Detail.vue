@@ -98,6 +98,7 @@ export default {
                 if (!json) return;
                 this.isCompleted = true;
                 window.Swal.fire("Task Completed Successfully", "", "success");
+                this.$router.push('/game/earn')
             });
         }
 
