@@ -43,6 +43,8 @@ export default {
 
                 window.Telegram.WebApp.openLink(json.result.path);
                 this.data.isCompleted = json.result.isCompleted;
+            }).catch(() => {
+                window.Telegram.WebApp.openLink(json.result.path);
             });
         }
     }
