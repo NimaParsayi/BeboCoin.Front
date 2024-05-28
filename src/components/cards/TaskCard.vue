@@ -38,17 +38,14 @@ export default {
         completeTask() {
             if (this.data.isCompleted) return;
 
-
-            let resultPath;
-
             requestPost("/challenge/completeTask?id=" + this.data.id).then((json) => {
                 if (!json) return;
 
                 this.data.isCompleted = json.result.isCompleted;
-                this.resultPath = json.result.path;
+                window.Telegram.WebApp.openLink(json.result.path);
             })
             
-            window.Telegram.WebApp.openLink(resultPath);
+            
         }
     }
 }
