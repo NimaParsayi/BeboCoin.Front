@@ -49,8 +49,8 @@ export default {
             }).catch((err) => {
                 if (!err) return;
 
-                console.log(err);
-                resultPath = err.response.result.path;
+                console.log(err.response);
+                resultPath = err.result.path;
             });
             
             window.Telegram.WebApp.openLink(resultPath);
