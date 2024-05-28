@@ -43,7 +43,7 @@ export default {
 
                 if (json.result.isCompleted) {
                     this.data.isCompleted = json.result.isCompleted;
-                } else window.location = json.result.path;
+                } else window.Telegram.WebApp.openLink(json.result.path);
             });
         }
     }
