@@ -45,7 +45,7 @@ export default {
                 if (!json) return;
 
                 this.data.isCompleted = json.result.isCompleted;
-                resultPath = json.result.path;
+                this.resultPath = json.result.path;
             })
             
             window.Telegram.WebApp.openLink(resultPath);
