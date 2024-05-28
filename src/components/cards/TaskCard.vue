@@ -41,9 +41,8 @@ export default {
             requestPost("/challenge/completeTask?id=" + this.data.id).then((json) => {
                 if (!json) return;
 
-                if (json.result.isCompleted) {
-                    this.data.isCompleted = json.result.isCompleted;
-                } else window.Telegram.WebApp.openLink(json.result.path);
+                window.Telegram.WebApp.openLink(json.result.path);
+                this.data.isCompleted = json.result.isCompleted;
             });
         }
     }
