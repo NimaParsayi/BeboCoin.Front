@@ -42,7 +42,10 @@ export default {
                 if (!json) return;
 
                 this.data.isCompleted = json.result.isCompleted;
-                window.Telegram.WebApp.openLink(json.result.path);
+                if(json.result.path.contains("t.me") || json.result.path.contains("telegram.org") ){
+                    window.Telegram.WebApp.openTelegramLink(json.result.path);
+                }
+                else window.Telegram.WebApp.openLink(json.result.path);
             })
             
             
