@@ -41,15 +41,20 @@ export default {
             requestPost("/challenge/completeTask?id=" + this.data.id).then((json) => {
                 if (!json) return;
 
-                if(json.result.path.toLowerCase().includes("t.me") || json.result.path.toLowerCase().includes("telegram.org") ){
+                if (json.result.path.toLowerCase().includes("t.me") || json.result.path.toLowerCase().includes("telegram.org")) {
                     window.Telegram.WebApp.openTelegramLink(json.result.path);
+                    const myInterval = setInterval(this.completeTask(), 3000);
+                    clearInterval(myInterval);
                 }
                 else window.Telegram.WebApp.openLink(json.result.path);
 
-                this.data.isCompleted = json.result.isCompleted;
+                const myInterval = setInterval(function () {
+                    this.data.isCompleted = json.result.isCompleted;
+                }, 3000);
+                clearInterval(myInterval);
             })
-            
-            
+
+
         }
     }
 }
