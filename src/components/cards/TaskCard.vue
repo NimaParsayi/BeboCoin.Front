@@ -41,7 +41,7 @@ export default {
             requestPost("/challenge/completeTask?id=" + this.data.id).then((json) => {
                 if (!json) return;
 
-                if(json.result.path.includes("t.me") || json.result.path.includes("telegram.org") ){
+                if(json.result.path.toLowerCase().includes("t.me") || json.result.path.toLowerCase().includes("telegram.org") ){
                     window.Telegram.WebApp.openTelegramLink(json.result.path);
                 }
                 else window.Telegram.WebApp.openLink(json.result.path);
