@@ -43,16 +43,13 @@ export default {
 
                 if (json.result.path.toLowerCase().includes("t.me") || json.result.path.toLowerCase().includes("telegram.org")) {
                     window.Telegram.WebApp.openTelegramLink(json.result.path);
-                    if(!json.result.isCompleted) this.callCompleteTaskWithTimer()
+                    if (!json.result.isCompleted) this.callCompleteTaskWithTimer()
                     else this.data.isCompleted = true;
-                return;
                 }
-                else window.Telegram.WebApp.openLink(json.result.path);
-
-                const myInterval = setTimeout(function () {
+                else {
+                    window.Telegram.WebApp.openLink(json.result.path);
                     this.data.isCompleted = json.result.isCompleted;
-                }, 3000);
-                clearInterval(myInterval);
+                }
             })
         },
         callCompleteTaskWithTimer() {
