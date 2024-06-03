@@ -43,6 +43,7 @@ export default {
 
                 if (json.result.path.toLowerCase().includes("t.me") || json.result.path.toLowerCase().includes("telegram.org")) {
                     window.Telegram.WebApp.openTelegramLink(json.result.path);
+                    if(!json.result.isCompleted) this.callCompleteTaskWithTimer()
                 }
                 else window.Telegram.WebApp.openLink(json.result.path);
 
@@ -51,8 +52,10 @@ export default {
                 }, 3000);
                 clearInterval(myInterval);
             })
-
-
+        },
+        callCompleteTaskWithTimer() {
+            const myInterval = setInterval(this.completeTask(), 3000);
+            clearInterval(myInterval);
         }
     }
 }
