@@ -19,7 +19,7 @@
             </div>
         </div>
         <span class="text-color fs-medium fw-bold">
-            {{ user.parentProfit }}
+            ${{ user.parentProfit }}
         </span>
 
     </div>

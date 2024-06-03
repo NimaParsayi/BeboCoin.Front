@@ -3,7 +3,7 @@
         <div class="flex-center">
             <div class="card_image flex-center p-2 box-shadow bg-card mr-3 rounded-2">
                 <img v-if="data.isCompleted" src="@/assets/images/icon/done.png" alt="">
-                <img v-if="!data.isCompleted" src="@/assets/images/icon/clock.png" alt="">
+                <img v-else src="@/assets/images/icon/clock.png" alt="">
             </div>
             <div class="d-flex flex-column">
                 <span class="text-color fs-medium fw-bold">{{ data.title }}</span>

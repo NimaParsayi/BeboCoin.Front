@@ -13,7 +13,7 @@
                 <div class="d-flex flex-column ml-2">
                     <span class="text-color fs-medium fw-bold">Invite Friends 💎 </span>
                     <span class="description-color fs-small fw-bold mt-1">Invite Friends and Get <b
-                            class="theme-color">10%</b> bonus</span>
+                            class="theme-color">10%</b> bonus & 10000~50000 Bebo per fren</span>
                 </div>
             </div>
         </div>

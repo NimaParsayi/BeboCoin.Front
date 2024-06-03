@@ -122,6 +122,7 @@ router.beforeEach((to, from, next) => {
     NProgress.start();
 
     const sign = window.Telegram.WebApp.initData
+    console.log(sign);
 
     if (to.meta.requiresAuth) {
         if (to.path !== '/') {
