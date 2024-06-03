@@ -11,7 +11,7 @@
         </div>
         <div v-if="!data.isCompleted" class="flex-center text-color">
             <ArrowRightShortIcon v-if="!isOpened" width="25" height="25" />
-            <strong v-else style="padding: .02rem; border-radius: 0.5rem; background: #fff;">Check</strong>
+            <strong v-else style="padding: .3rem .5rem; border-radius: 0.5rem; background: #fff;">Check</strong>
         </div>
     </div>
 </template>
