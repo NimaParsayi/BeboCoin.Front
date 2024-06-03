@@ -13,10 +13,10 @@ export const requestPost = (url, data) => {
     }).then(data => {
         NProgress.done();
 
-        if (data.status === 401) {
-            localStorage.removeItem("token")
-            window.location.reload();
-        }
+        // if (data.status === 401) {
+        //     localStorage.removeItem("token")
+        //     window.location.reload();
+        // }
 
         if (data.ok)
             return data.json()
@@ -24,7 +24,7 @@ export const requestPost = (url, data) => {
     }).catch(err => {
         console.log(err);
         localStorage.removeItem("token")
-        window.location.reload();
+        // window.location.reload();
         NProgress.done();
         return null
     });
@@ -39,17 +39,17 @@ export const requestGet = (url) => {
     })
         .then(response => {
             NProgress.done();
-            if (response.status === 401) {
-                localStorage.removeItem("token")
-                window.location.reload();
-            }
+            // if (response.status === 401) {
+            //     localStorage.removeItem("token")
+            //     window.location.reload();
+            // }
             if (!response.ok) return null;
 
             return response.json()
         }).catch(err => {
             console.log(err);
             localStorage.removeItem("token")
-            window.location.reload();
+           // window.location.reload();
             NProgress.done();
             return null
         });
