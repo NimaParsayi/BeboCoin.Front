@@ -12,19 +12,13 @@ export const requestPost = (url, data) => {
         body: JSON.stringify(data)
     }).then(data => {
         NProgress.done();
-
-        // if (data.status === 401) {
-        //     localStorage.removeItem("token")
-        //     window.location.reload();
-        // }
-
         if (data.ok)
             return data.json()
         else return null;
     }).catch(err => {
         console.log(err);
         localStorage.removeItem("token")
-        // window.location.reload();
+        if (err.status === 401) window.location.reload();
         NProgress.done();
         return null
     });
@@ -39,17 +33,13 @@ export const requestGet = (url) => {
     })
         .then(response => {
             NProgress.done();
-            // if (response.status === 401) {
-            //     localStorage.removeItem("token")
-            //     window.location.reload();
-            // }
             if (!response.ok) return null;
 
             return response.json()
         }).catch(err => {
             console.log(err);
             localStorage.removeItem("token")
-           // window.location.reload();
+            if (err.status === 401) window.location.reload();
             NProgress.done();
             return null
         });
