@@ -10,7 +10,8 @@
             </div>
         </div>
         <div v-if="!data.isCompleted" class="flex-center text-color">
-            <ArrowRightShortIcon width="25" height="25" />
+            <ArrowRightShortIcon v-if="!isOpened" width="25" height="25" />
+            <strong v-else style="padding: .02rem; border-radius: 0.5rem; background: #fff;">Check</strong>
         </div>
     </div>
 </template>
@@ -23,7 +24,8 @@ export default {
     name: "TaskCard",
     data() {
         return {
-            data: this.task
+            data: this.task,
+            isOpened: false
         };
     },
     components: {
@@ -42,19 +44,20 @@ export default {
                 if (!json) return;
 
                 if (json.result.path.toLowerCase().includes("t.me") || json.result.path.toLowerCase().includes("telegram.org")) {
-                    window.Telegram.WebApp.openTelegramLink(json.result.path);
-                    if (!json.result.isCompleted) this.callCompleteTaskWithTimer()
+                    if (!json.result.isCompleted) {
+                        this.isOpened = true;
+                        window.Telegram.WebApp.openTelegramLink(json.result.path);
+                    }
                     else this.data.isCompleted = true;
                 }
                 else {
+                    let myInterval = setTimeout(function () {
+                        this.data.isCompleted = json.result.isCompleted;
+                    }, 3000);
+                    clearInterval(myInterval);
                     window.Telegram.WebApp.openLink(json.result.path);
-                    this.data.isCompleted = json.result.isCompleted;
                 }
             })
-        },
-        callCompleteTaskWithTimer() {
-            const myInterval = setTimeout(this.completeTask(), 3000);
-            clearInterval(myInterval);
         }
     }
 }
