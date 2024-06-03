@@ -51,10 +51,7 @@ export default {
                     else this.data.isCompleted = true;
                 }
                 else {
-                    let myInterval = setTimeout(function () {
-                        this.data.isCompleted = json.result.isCompleted;
-                    }, 3000);
-                    clearInterval(myInterval);
+                    this.data.isCompleted = json.result.isCompleted;
                     window.Telegram.WebApp.openLink(json.result.path);
                 }
             })
