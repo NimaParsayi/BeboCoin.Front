@@ -18,7 +18,7 @@ export const requestPost = (url, data) => {
     }).catch(err => {
         console.log(err);
         localStorage.removeItem("token")
-        if (err.status === 401) window.location.reload();
+        if (err.resposne.status === 401) window.location.reload();
         NProgress.done();
         return null
     });
@@ -39,7 +39,7 @@ export const requestGet = (url) => {
         }).catch(err => {
             console.log(err);
             localStorage.removeItem("token")
-            if (err.status === 401) window.location.reload();
+            if (err.resposne.status === 401) window.location.reload();
             NProgress.done();
             return null
         });
