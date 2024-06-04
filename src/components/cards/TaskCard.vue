@@ -48,6 +48,10 @@ export default {
                         this.isOpened = true;
                         window.Telegram.WebApp.openTelegramLink(json.result.path);
                     }
+                    else if (json.result.path.toLowerCase().includes("bot")) {
+                        window.Telegram.WebApp.openTelegramLink(json.result.path);
+                        this.data.isCompleted = true;
+                    }
                     else this.data.isCompleted = true;
                 }
                 else {
