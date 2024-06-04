@@ -19,7 +19,7 @@
         </div>
         <div class="flex-center text-color">
             <ArrowRightShortIcon v-if="!challenge.isCompleted" width="25" height="25" />
-            <span v-if="challenge.isCompleted" class="description-color fs-small fw-bold">completed</span>
+            <span v-if="challenge.isCompleted" class="description-color fs-small fw-bold">Completed</span>
         </div>
     </div>
 </template>

@@ -65,7 +65,10 @@ export const requestSignIn = (sign, next) => {
             if (!data) return;
             localStorage.setItem("webAppData", sign)
             localStorage.setItem("token", JSON.stringify(data.result))
-        }).catch(err => console.log(err));
+        }).catch(err => {
+            if (err.resposne.status === 401 || err.resposne.status === 501 || err.resposne.status === 400 || err.resposne.status === 503) window.location.reload();
+            console.log(err);
+        });
     }
     next();
 }
