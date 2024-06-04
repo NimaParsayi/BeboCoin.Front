@@ -15,13 +15,13 @@ export const requestPost = (url, data) => {
         if (data.ok)
             return data.json()
         else {
-            window.location.reload();
+           // window.location.reload();
             return null;
         }
     }).catch(err => {
         console.log(err);
         localStorage.removeItem("token")
-        if (err.resposne.status === 401 || err.resposne.status === 501 || err.resposne.status === 400 || err.resposne.status === 503) window.location.reload();
+        if (err.resposne.status === 401) window.location.reload();
         NProgress.done();
         return null
     });
@@ -37,7 +37,7 @@ export const requestGet = (url) => {
         .then(response => {
             NProgress.done();
             if (!response.ok) {
-                window.location.reload();
+                //window.location.reload();
                 return null;
             }
 
@@ -45,7 +45,7 @@ export const requestGet = (url) => {
         }).catch(err => {
             console.log(err);
             localStorage.removeItem("token")
-            if (err.resposne.status === 401 || err.resposne.status === 501 || err.resposne.status === 400 || err.resposne.status === 503) window.location.reload();
+            if (err.resposne.status === 401) window.location.reload();
             NProgress.done();
             return null
         });
