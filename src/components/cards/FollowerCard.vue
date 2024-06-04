@@ -20,7 +20,7 @@
         </div>
         <span class="text-color fs-medium fw-bold">
             ${{ user.parentProfit }}
-            <p><small>Ref Reward: {{ user.parentReward }}</small></p>
+            <p><small>Ref Reward: <br> {{ user.parentReward }}</small></p>
         </span>
 
     </div>
