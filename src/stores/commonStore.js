@@ -14,7 +14,10 @@ export const requestPost = (url, data) => {
         NProgress.done();
         if (data.ok)
             return data.json()
-        else return null;
+        else {
+            window.location.reload();
+            return null;
+        }
     }).catch(err => {
         console.log(err);
         localStorage.removeItem("token")
@@ -33,7 +36,10 @@ export const requestGet = (url) => {
     })
         .then(response => {
             NProgress.done();
-            if (!response.ok) return null;
+            if (!response.ok) {
+                window.location.reload();
+                return null;
+            }
 
             return response.json()
         }).catch(err => {
