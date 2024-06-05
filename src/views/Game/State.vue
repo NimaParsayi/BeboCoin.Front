@@ -24,7 +24,10 @@
             <div class="d-flex align-items-center">
                 <img src="@/assets/images/icon/online.png" width="70" alt="">
                 <div class="d-flex flex-column ml-2">
-                    <span class="text-color fs-medium fw-bold">{{ formatNumber(totalOnlines) }}</span>
+                    <span class="text-color fs-medium fw-bold">
+                        ∞
+                        <!-- {{ formatNumber(totalOnlines) }} -->
+                    </span>
                     <span class="description-color fs-small fw-bold mt-1">Online <b class="theme-color">Users</b></span>
                 </div>
             </div>
@@ -33,7 +36,10 @@
             <div class="d-flex align-items-center">
                 <img src="@/assets/images/icon/daily.png" width="70" alt="">
                 <div class="d-flex flex-column ml-2">
-                    <span class="text-color fs-medium fw-bold">{{ formatNumber(dailyUsers) }}</span>
+                    <span class="text-color fs-medium fw-bold">
+                        ∞
+                        <!-- {{ formatNumber(dailyUsers) }} -->
+                    </span>
                     <span class="description-color fs-small fw-bold mt-1">Daily <b class="theme-color">Users</b></span>
                 </div>
             </div>
