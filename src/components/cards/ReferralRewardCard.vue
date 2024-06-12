@@ -1,13 +1,13 @@
 <template>
-    <div class="flex-center w-full flex-column box-shadow p-3 my-4 bg-card rounded-1" v-if="user.chatId === 1066096433">
+    <div class="flex-center w-full flex-column box-shadow p-3 my-4 bg-card rounded-1">
         <div class="d-flex flex-column w-full">
             <span class="text-color fs-medium fw-bold">Invite Friends</span>
             <div class="line my-2"></div>
             <div class="flex-center flex-column w-full">
                 <span class="p-1">Invite 3 of your friends and get $1.</span>
                 <p class="p-1">You now invited {{ referralCount }}/3</p>
-                <button class="box-shadow p-2 m-1 rounded-1 group_detail_join_button w-full" @click="getReward">Get
-                    Reward</button>
+                <button class="box-shadow p-2 m-1 rounded-1 group_detail_join_button w-full" @click="getReward"
+                    :disabled="isUserGotReferralReward">{{ isUserGotReferralReward ? 'You already got this reward' : 'Get Reward' }}</button>
             </div>
         </div>
     </div>
@@ -47,7 +47,7 @@ export default {
                     this.isUserGotReferralReward = true;
                 }
             }).catch((err) => {
-                window.Swal.fire(err.result, "", "error");
+                window.Swal.fire(err.response, "", "error");
             });
         }
     }
