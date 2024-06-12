@@ -31,9 +31,11 @@
 
                     </swiper>
                 </div>
-
+<ReferralRewardCard>
             </div>
         </div>
+
+
     </section>
 </template>
 
@@ -45,6 +47,7 @@ import "swiper/css/pagination";
 
 import { Autoplay, Grid, Pagination } from "swiper/modules";
 import ChallengeCard from "@/components/cards/ChallengeCard.vue";
+import ReferralRewardCard from "@/components/cards/ReferralRewardCard.vue";
 import { IsAuthenticated, requestGet } from "@/stores/commonStore";
 import { BOT_LINK } from "@/constants/configuration";
 
@@ -68,6 +71,7 @@ export default {
         Swiper,
         SwiperSlide,
         ChallengeCard,
+        ReferralRewardCard
     },
     setup() {
         return {

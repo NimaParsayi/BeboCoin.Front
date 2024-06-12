@@ -7,7 +7,8 @@ export const requestPost = (url, data) => {
         method: 'POST',
         headers: {
             "Authorization": 'Bearer ' + getToken(),
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
         },
         body: JSON.stringify(data)
     }).then(data => {
@@ -21,7 +22,7 @@ export const requestPost = (url, data) => {
     }).catch(err => {
         console.log(err);
         localStorage.removeItem("token")
-        if (err.resposne.status === 401) window.location.reload();
+        if (err.status === 401) window.location.reload();
         NProgress.done();
         return null
     });
@@ -32,6 +33,7 @@ export const requestGet = (url) => {
         headers: {
             "Authorization": 'Bearer ' + getToken(),
             'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
         }
     })
         .then(response => {
@@ -45,7 +47,7 @@ export const requestGet = (url) => {
         }).catch(err => {
             console.log(err);
             localStorage.removeItem("token")
-            if (err.resposne.status === 401) window.location.reload();
+            if (err.status === 401) window.location.reload();
             NProgress.done();
             return null
         });
