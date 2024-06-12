@@ -31,7 +31,7 @@
 
                     </swiper>
                 </div>
-<ReferralRewardCard>
+                <ReferralRewardCard></ReferralRewardCard>
             </div>
         </div>
 
